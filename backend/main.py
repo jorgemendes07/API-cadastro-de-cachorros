@@ -74,3 +74,13 @@ def atualizar_cachorro(cachorro_id: int, novos_dados: Cachorro, session: Session
     session.commit()
     session.refresh(cachorro_selecionado)
     return cachorro_selecionado
+
+# Deletar Cachorro
+@app.delete("/cachorro/{id}")
+def deletar_cachorro(cachorro_id: int, session: Session = Depends(get_session)):
+        cachorro_selecionado = session.get(Cachorro, cachorro_id)
+        if not cachorro_selecionado:
+            raise HTTPException(status_code=404, detail="Cachorro não encontrado")
+        session.delete(cachorro_selecionado)
+        session.commit()
+        return cachorro_selecionado
