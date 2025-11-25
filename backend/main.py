@@ -2,6 +2,7 @@ from datetime import date
 from sqlmodel import Field, SQLModel, create_engine, Session, select
 from sqlalchemy import String
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 # Model
 class Cachorro(SQLModel, table=True):
@@ -30,6 +31,19 @@ def get_session():
         session.close()
 
 app = FastAPI()
+
+# Configuração do CORS
+origins = [
+    "http://localhost:5173"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 create_db_and_tables()
 
