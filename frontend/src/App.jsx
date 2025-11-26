@@ -1,11 +1,10 @@
 import { useState } from 'react'
-
+import DogTable from './components/DogTable'
 function App() {
   
   return (
     <>
-      <h1 class="text-3xl">Hello, World</h1>
-      <i class="fa-solid fa-pen"></i>
+      <DogTable />
     </>
   )
 }
