@@ -1,0 +1,125 @@
+import { useState } from "react";
+import axios from "axios";
+
+export default function DogForm({isOpen, onClose, onSuccess}) {
+    const initialFormState = {
+        nome: "",
+        raca: "",
+        data_nascimento: "",
+        porte: "Médio",
+    };
+
+    const [formData, setFormData] = useState(initialFormState);
+    const [loading, setLoading] = useState(false);
+
+    if (!isOpen) return null;
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        try {
+            await axios.post("http://127.0.0.1:8000/cachorros", formData);
+            alert("Cachorro cadastrado com sucesso!");
+            setFormData(initialFormState);
+            onSuccess();
+            onClose();
+        } catch (error) {
+            console.error("Erro ao criar!", error);
+            alert("Erro ao cadastrar. Verifique o console")
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="fixed inset-0 bg-emerald-50/90 overflow-y-auto h-full w-full flex justify-center items-center z-50">
+            <div className="bg-white p-8 rounded-md shadow-xl w-full max-w-md relative">
+                
+                <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                    <i className="fa-solid fa-xmark text-xl"></i>
+                </button>
+
+                <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Novo Cachorro</h2>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Nome</label>
+                        <input
+                            type="text"
+                            name="nome"
+                            value={formData.nome}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Raça</label>
+                        <input
+                            type="text"
+                            name="raca"
+                            value={formData.raca}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Data de Nascimento</label>
+                        <input
+                            type="date"
+                            name="data_nascimento"
+                            value={formData.data_nascimento}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Porte</label>
+                        <select
+                            name="porte"
+                            value={formData.porte}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                        >
+                            <option value="Pequeno">Pequeno</option>
+                            <option value="Médio">Médio</option>
+                            <option value="Grande">Grande</option>
+                        </select>
+                    </div>
+
+                    <div className="flex justify-end space-x-3 mt-6">
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition duration-300"
+                            disabled={loading}
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            type="submit"
+                            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300 flex items-center"
+                            disabled={loading}
+                        >
+                            {loading ? 'Salvando...' : 'Salvar'}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    )
+};

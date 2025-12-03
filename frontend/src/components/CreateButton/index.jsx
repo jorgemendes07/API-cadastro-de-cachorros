@@ -1,7 +1,9 @@
-export default function CreateButton() {
+export default function CreateButton({ onClick }) {
     return (
-        <button 
-            className="ml-[5%] mt-5 bg-white p-3 cursor-pointer hover:bg-gray-300 ">
+        <button
+            onClick={onClick}
+            className="bg-white text-l rounded shadow-md p-3 cursor-pointer hover:bg-blue-200 duration-300">
+                <i className="fa-solid fa-plus mr-1"></i>
                 Adicionar Cachorro
         </button>
     )
