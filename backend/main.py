@@ -72,7 +72,7 @@ def selecionar_cachorro_pelo_id(cachorro_id: int, session: Session = Depends(get
     return cachorro_selecionado
 
 # Atualizar Cachorro
-@app.put("/cachorros/{id}", response_model=Cachorro)
+@app.put("/cachorros/{cachorro_id}", response_model=Cachorro)
 def atualizar_cachorro(cachorro_id: int, novos_dados: Cachorro, session: Session = Depends(get_session)):
     cachorro_selecionado = session.get(Cachorro, cachorro_id)
     if not cachorro_selecionado:
@@ -90,7 +90,7 @@ def atualizar_cachorro(cachorro_id: int, novos_dados: Cachorro, session: Session
     return cachorro_selecionado
 
 # Deletar Cachorro
-@app.delete("/cachorro/{id}")
+@app.delete("/cachorros/{cachorro_id}")
 def deletar_cachorro(cachorro_id: int, session: Session = Depends(get_session)):
         cachorro_selecionado = session.get(Cachorro, cachorro_id)
         if not cachorro_selecionado:
