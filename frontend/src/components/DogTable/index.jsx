@@ -1,4 +1,4 @@
-export default function DogTable({ cachorros }) {
+export default function DogTable({ cachorros, onDelete }) {
 
     return (
         <div className="w-[95%] mx-auto mt-6 shadow-md rounded overflow-hidden">
@@ -21,7 +21,9 @@ export default function DogTable({ cachorros }) {
                             <td className="py-3">
                                 <i className="fa-solid fa-eye cursor-pointer"></i>
                                 <i className="fa-solid fa-pen  mx-4 cursor-pointer"></i>
-                                <i className="fa-solid fa-trash cursor-pointer"></i>
+                                <i className="fa-solid fa-trash cursor-pointer"
+                                onClick={() => onDelete(cachorro.id)}
+                                ></i>
                             </td>
                         </tr>
                     ))}
