@@ -3,12 +3,13 @@ import axios from 'axios'
 
 import DogTable from './components/DogTable'
 import CreateButton from './components/CreateButton'
-import DogForm from './components/DogForm'
+import DogFormModal from './components/DogFormModal'
 
 function App() {
 
   const [cachorros, setCachorros] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingDog, setEditingDog] = useState(null);
 
   const fetchCachorros = async () => {
     try {
@@ -40,8 +41,20 @@ function App() {
     }
   }
 
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
+  const handleOpenCreateModal = () => {
+    setEditingDog(null);
+    setIsModalOpen(true);
+  }
+
+  const handleEditClick = (dog) => {
+    setEditingDog(dog);
+    setIsModalOpen(true);
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setEditingDog(null);
+  }
     
   
   return (
@@ -49,15 +62,20 @@ function App() {
         <div className="w-[90%] mx-auto flex justify-between items-center">
             <h1 className="text-3xl font-bold text-gray-800">Gerenciamento de cadastros</h1>
             
-            <CreateButton onClick={handleOpenModal} />
+            <CreateButton onClick={handleOpenCreateModal} />
         </div>
 
-        <DogTable cachorros={cachorros} onDelete={handleDelete} />
+        <DogTable 
+          cachorros={cachorros} 
+          onDelete={handleDelete} 
+          onEdit={handleEditClick} 
+        />
 
-        <DogForm
+        <DogFormModal
             isOpen={isModalOpen} 
             onClose={handleCloseModal}
             onSuccess={fetchCachorros}
+            dogToEdit={editingDog}
         />
     </div>
   )

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function DogForm({isOpen, onClose, onSuccess}) {
+export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
     const initialFormState = {
         nome: "",
         raca: "",
@@ -12,7 +12,20 @@ export default function DogForm({isOpen, onClose, onSuccess}) {
     const [formData, setFormData] = useState(initialFormState);
     const [loading, setLoading] = useState(false);
 
-    if (!isOpen) return null;
+    useEffect(() => {
+        if (isOpen) {
+            if (dogToEdit) {
+                setFormData({
+                    nome: dogToEdit.nome,
+                    raca: dogToEdit.raca,
+                    data_nascimento: dogToEdit.data_data_nascimento,
+                    porte: dogToEdit.porte,
+                });
+            } else {
+                setFormData(initialFormState);
+            }
+        }
+    }, [isOpen, dogToEdit]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,28 +40,41 @@ export default function DogForm({isOpen, onClose, onSuccess}) {
         setLoading(true);
 
         try {
-            await axios.post("http://127.0.0.1:8000/cachorros", formData);
+            if (dogToEdit) {
+                await axios.put(`http://127.0.0.1:8000/cachorros/${dogToEdit.id}`, formData);
+                alert("Cachorro atualizado com sucesso!");
+            } else {
+                await axios.post("http://127.0.0.1:8000/cachorros", formData);
             alert("Cachorro cadastrado com sucesso!");
+            }
+
             setFormData(initialFormState);
             onSuccess();
             onClose();
+
         } catch (error) {
-            console.error("Erro ao criar!", error);
-            alert("Erro ao cadastrar. Verifique o console")
+            console.error("Erro ao salvar:", error);
+            const acao = dogToEdit ? "atualizar" : "cadastrar"
+            alert(`Erro ao ${acao}. Verifique o console`)
         } finally {
             setLoading(false);
         }
     };
 
+    if (!isOpen) return null;
+
+    const modalTitle = dogToEdit ? "Editar Cachorro" : "Novo Cachorro"
+    const buttonText = loading ? 'Salvando...' : (dogToEdit ? "Atualizar" : "Salvar");
+
     return (
         <div className="fixed inset-0 bg-emerald-50/90 overflow-y-auto h-full w-full flex justify-center items-center z-50">
             <div className="bg-white p-8 rounded-md shadow-xl w-full max-w-md relative">
                 
-                <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 cursor-pointer">
                     <i className="fa-solid fa-xmark text-xl"></i>
                 </button>
 
-                <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Novo Cachorro</h2>
+                <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">{modalTitle}</h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
@@ -105,17 +131,17 @@ export default function DogForm({isOpen, onClose, onSuccess}) {
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition duration-300"
+                            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition duration-300 cursor-pointer"
                             disabled={loading}
                         >
                             Cancelar
                         </button>
                         <button
                             type="submit"
-                            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300 flex items-center"
+                            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300 flex items-center  cursor-pointer"
                             disabled={loading}
                         >
-                            {loading ? 'Salvando...' : 'Salvar'}
+                            {buttonText}
                         </button>
                     </div>
                 </form>
