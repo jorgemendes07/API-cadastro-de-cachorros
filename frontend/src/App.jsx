@@ -4,12 +4,15 @@ import axios from 'axios'
 import DogTable from './components/DogTable'
 import CreateButton from './components/CreateButton'
 import DogFormModal from './components/DogFormModal'
+import DogDetailsModal from './components/DogDetailsModal'
 
 function App() {
 
   const [cachorros, setCachorros] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingDog, setEditingDog] = useState(null);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [viewingDog, setViewingDog] = useState(null);
 
   const fetchCachorros = async () => {
     try {
@@ -55,8 +58,17 @@ function App() {
     setIsModalOpen(false);
     setEditingDog(null);
   }
-    
   
+  const handleViewClick = (dog) => {
+    setViewingDog(dog);
+    setIsViewModalOpen(true);
+  }
+
+  const handleCloseViewModal = () => {
+    setIsViewModalOpen(false);
+    setViewingDog(null);
+  }
+
   return (
     <div className="min-h-screen bg-emerald-100 p-8">
         <div className="w-[90%] mx-auto flex justify-between items-center">
@@ -68,7 +80,8 @@ function App() {
         <DogTable 
           cachorros={cachorros} 
           onDelete={handleDelete} 
-          onEdit={handleEditClick} 
+          onEdit={handleEditClick}
+          onView={handleViewClick}
         />
 
         <DogFormModal
@@ -76,6 +89,12 @@ function App() {
             onClose={handleCloseModal}
             onSuccess={fetchCachorros}
             dogToEdit={editingDog}
+        />
+
+        <DogDetailsModal
+          isOpen={isViewModalOpen}
+          onClose={handleCloseViewModal}
+          dog={viewingDog}
         />
     </div>
   )
