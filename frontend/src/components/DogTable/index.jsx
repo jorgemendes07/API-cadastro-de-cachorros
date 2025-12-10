@@ -6,9 +6,24 @@ export default function DogTable({ cachorros, onDelete, onEdit, onView }) {
                 <thead className="text-center text-gray-800 bg-orange-100">
                     <tr>
                         <th className="py-3 px-4">ID</th>
-                        <th className="py-3 px-4">Nome</th>
-                        <th className="py-3 px-4">Raça</th>
-                        <th className="py-3 px-4">Porte</th>
+                        <th className="py-3 px-4">
+                            <div className="flex place-content-center" >
+                                <span>Nome</span>
+                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"></i> 
+                            </div>
+                        </th>
+                        <th className="py-3 px-4">
+                            <div className="flex place-content-center">
+                                <span>Raça</span>
+                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"></i>
+                            </div>
+                        </th>
+                        <th className="py-3 px-4">
+                            <div className="flex place-content-center">
+                                <span>Porte</span>
+                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"></i>
+                            </div>
+                        </th>
                         <th className="py-3 px-4">Ações</th>
                     </tr>
                     
