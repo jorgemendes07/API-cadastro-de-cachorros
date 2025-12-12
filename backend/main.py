@@ -1,7 +1,7 @@
 from datetime import date
 from sqlmodel import Field, SQLModel, create_engine, Session, select
 from sqlalchemy import String
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 # Model
@@ -57,8 +57,18 @@ def cadastrar_cachorro(cachorro: Cachorro, session: Session = Depends(get_sessio
 
 # Listar todos os cachorros
 @app.get("/cachorros", response_model=list[Cachorro])
-def listar_cachorros(session: Session = Depends(get_session)):
+def listar_cachorros(
+    session: Session = Depends(get_session),
+    ordenar_por: str = Query("nome", enum=["nome", "raca", "porte"])
+    ):
     selecao = select(Cachorro)
+    if ordenar_por == "raca":
+        selecao = selecao.order_by(Cachorro.raca)
+    elif ordenar_por == "porte":
+        selecao = selecao.order_by(Cachorro.porte)
+    else:
+        selecao = selecao.order_by(Cachorro.nome)
+        
     resultado = session.exec(selecao)
     cachorros = resultado.all()
     return cachorros

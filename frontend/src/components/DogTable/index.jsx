@@ -1,4 +1,4 @@
-export default function DogTable({ cachorros, onDelete, onEdit, onView }) {
+export default function DogTable({ cachorros, onDelete, onEdit, onView, onSort }) {
 
     return (
         <div className="w-[95%] mx-auto mt-6 shadow-md rounded overflow-hidden">
@@ -9,19 +9,25 @@ export default function DogTable({ cachorros, onDelete, onEdit, onView }) {
                         <th className="py-3 px-4">
                             <div className="flex place-content-center" >
                                 <span>Nome</span>
-                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"></i> 
+                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"
+                                onClick={() => onSort("nome")}
+                                ></i> 
                             </div>
                         </th>
                         <th className="py-3 px-4">
                             <div className="flex place-content-center">
                                 <span>Raça</span>
-                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"></i>
+                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"
+                                onClick={() => onSort("raca")}
+                                ></i>
                             </div>
                         </th>
                         <th className="py-3 px-4">
                             <div className="flex place-content-center">
                                 <span>Porte</span>
-                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"></i>
+                                <i className="fa-solid fa-sort-down ml-1 cursor-pointer"
+                                onClick={() => onSort("porte")}
+                                ></i>
                             </div>
                         </th>
                         <th className="py-3 px-4">Ações</th>

@@ -14,9 +14,9 @@ function App() {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [viewingDog, setViewingDog] = useState(null);
 
-  const fetchCachorros = async () => {
+  const fetchCachorros = async (criterio = "nome") => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/cachorros");
+      const response = await axios.get(`http://127.0.0.1:8000/cachorros?ordenar_por=${criterio}`);
       setCachorros(response.data);
     } catch (error) {
       console.error("Erro ao buscar cachorror: ", error)
@@ -69,6 +69,10 @@ function App() {
     setViewingDog(null);
   }
 
+  const handleSort = (criterio) => {
+    fetchCachorros(criterio);
+  }
+
   return (
     <div className="min-h-screen bg-emerald-100 p-8">
         <div className="w-[90%] mx-auto flex justify-between items-center">
@@ -82,6 +86,7 @@ function App() {
           onDelete={handleDelete} 
           onEdit={handleEditClick}
           onView={handleViewClick}
+          onSort={handleSort}
         />
 
         <DogFormModal
