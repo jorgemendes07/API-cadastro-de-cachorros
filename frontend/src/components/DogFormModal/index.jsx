@@ -7,6 +7,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         raca: "",
         data_nascimento: "",
         porte: "Médio",
+        nome_tutor: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -20,6 +21,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     raca: dogToEdit.raca,
                     data_nascimento: dogToEdit.data_data_nascimento,
                     porte: dogToEdit.porte,
+                    nome_tutor: dogToEdit.nome_tutor || ""
                 });
             } else {
                 setFormData(initialFormState);
@@ -125,6 +127,18 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             <option value="Médio">Médio</option>
                             <option value="Grande">Grande</option>
                         </select>
+                    </div>
+
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Nome do tutor</label>
+                        <input
+                            type="text"
+                            name="nome_tutor"
+                            value={formData.nome_tutor}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
                     </div>
 
                     <div className="flex justify-end space-x-3 mt-6">
