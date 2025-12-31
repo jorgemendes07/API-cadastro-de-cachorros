@@ -20,7 +20,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                 setFormData({
                     nome: dogToEdit.nome,
                     raca: dogToEdit.raca,
-                    data_nascimento: dogToEdit.data_data_nascimento,
+                    data_nascimento: dogToEdit.data_nascimento,
                     porte: dogToEdit.porte,
                     nome_tutor: dogToEdit.nome_tutor || "",
                     contato: dogToEdit.contato || "",
