@@ -8,6 +8,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         data_nascimento: "",
         porte: "Médio",
         nome_tutor: "",
+        contato: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -21,7 +22,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     raca: dogToEdit.raca,
                     data_nascimento: dogToEdit.data_data_nascimento,
                     porte: dogToEdit.porte,
-                    nome_tutor: dogToEdit.nome_tutor || ""
+                    nome_tutor: dogToEdit.nome_tutor || "",
+                    contato: dogToEdit.contato || "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -137,7 +139,19 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             value={formData.nome_tutor}
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Contato</label>
+                        <input
+                            type="text"
+                            name="contato"
+                            value={formData.contato}
+                            placeholder="Preencha apenas com números"
+                            maxLength={11}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 

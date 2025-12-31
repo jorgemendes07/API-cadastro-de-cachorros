@@ -12,6 +12,7 @@ class Cachorro(SQLModel, table=True):
     data_nascimento: date = Field(sa_type=String)
     porte: str = Field(max_length=20)
     nome_tutor: str | None = Field(default= None, max_length=100)
+    contato: str | None = Field(default=None, max_length=11)
 
 # Configuração do db
 sqlite_file_name = "cachorros.db"
