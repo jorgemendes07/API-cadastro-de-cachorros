@@ -13,6 +13,8 @@ class Cachorro(SQLModel, table=True):
     porte: str = Field(max_length=20)
     nome_tutor: str | None = Field(default= None, max_length=100)
     contato: str | None = Field(default=None, max_length=11)
+    castrado: bool | None = Field(default=None)
+
 
 # Configuração do db
 sqlite_file_name = "cachorros.db"
