@@ -9,6 +9,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         porte: "Médio",
         nome_tutor: "",
         contato: "",
+        castrado: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -24,6 +25,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     porte: dogToEdit.porte,
                     nome_tutor: dogToEdit.nome_tutor || "",
                     contato: dogToEdit.contato || "",
+                    castrado: dogToEdit.castrado ?? "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -33,9 +35,15 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        let finalValue = value;
+
+        if (name === "castrado") {
+            finalValue = value === "true"
+        }
+
         setFormData(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: finalValue
         }));
     };
 
@@ -142,6 +150,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                         />
                     </div>
 
+                    {/* Contato */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2">Contato</label>
                         <input
@@ -153,6 +162,35 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
+                    </div>
+
+                    {/* Castrado */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Castrado</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="castrado"
+                            id="opcao_sim"
+                            value="true"
+                            checked={formData.castrado === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="opcao_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="castrado"
+                            id="opcao_nao"
+                            value="false"
+                            checked={formData.castrado === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="opcao_nao">Não</label>
+                        </div>
                     </div>
 
                     <div className="flex justify-end space-x-3 mt-6">

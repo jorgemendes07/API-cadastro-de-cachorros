@@ -62,6 +62,17 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                             )}
                         </p>
                     </div>
+
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Castrado</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.castrado === null || dog.castrado === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.castrado ? "Sim" : "Não"
+                            )}
+                        </p>
+                    </div>
                     
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">ID do Sistema</label>
