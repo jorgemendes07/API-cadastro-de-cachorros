@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date # validação de datas
 from sqlmodel import Field, SQLModel, create_engine, Session, select
 from sqlalchemy import String
 from fastapi import FastAPI, Depends, HTTPException, Query
@@ -14,6 +14,8 @@ class Cachorro(SQLModel, table=True):
     nome_tutor: str | None = Field(default= None, max_length=100)
     contato: str | None = Field(default=None, max_length=11)
     castrado: bool | None = Field(default=None)
+    vacina_antirrabica: date | None = Field(default=None, sa_type=String)
+    vacina_polivalente: date | None = Field(default=None, sa_type=String)
 
 
 # Configuração do db
