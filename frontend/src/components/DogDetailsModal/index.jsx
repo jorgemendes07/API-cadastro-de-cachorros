@@ -13,6 +13,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                 
                 <div className="space-y-4">
                     
+                    {/* Nome */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Nome</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
@@ -20,6 +21,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
 
+                    {/* Raça */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Raça</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
@@ -27,6 +29,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
 
+                    {/* Data de nascimento */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Data de Nascimento</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
@@ -34,6 +37,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
 
+                    {/* Porte */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Porte</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
@@ -41,6 +45,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
 
+                    {/* Tutor */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Tutor</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
@@ -52,6 +57,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
 
+                    {/* Contato */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Contato</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
@@ -62,7 +68,8 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                             )}
                         </p>
                     </div>
-
+                        
+                    {/* Castrado */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Castrado</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
@@ -73,7 +80,32 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                             )}
                         </p>
                     </div>
+
+                    {/* Vacina antirrábica */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Data da útlima vacina antirrábica</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.vacina_antirrabica === null || dog.vacina_antirrabica === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.vacina_antirrabica
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Vacina polivalente */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Data da última vacina polivalente</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.vacina_polivalente === null || dog.vacina_polivalente === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.vacina_polivalente
+                            )}
+                        </p>
+                    </div>
                     
+                    {/* ID */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">ID do Sistema</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-sm">

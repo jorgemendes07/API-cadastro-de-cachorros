@@ -10,6 +10,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         nome_tutor: "",
         contato: "",
         castrado: "",
+        vacina_antirrabica: "",
+        vacina_polivalente: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -26,6 +28,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     nome_tutor: dogToEdit.nome_tutor || "",
                     contato: dogToEdit.contato || "",
                     castrado: dogToEdit.castrado ?? "",
+                    vacina_antirrabica: dogToEdit.vacina_antirrabica || "",
+                    vacina_polivalente: dogToEdit.vacina_polivalente || "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -89,6 +93,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                 <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">{modalTitle}</h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
+
+                    {/* Nome */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2">Nome</label>
                         <input
@@ -100,7 +106,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             required
                         />
                     </div>
-
+                    
+                    {/* Raça */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2">Raça</label>
                         <input
@@ -113,6 +120,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                         />
                     </div>
 
+                    {/* Data de nascimento */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2">Data de Nascimento</label>
                         <input
@@ -125,6 +133,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                         />
                     </div>
 
+                    {/* Porte */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2">Porte</label>
                         <select
@@ -139,6 +148,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                         </select>
                     </div>
 
+                    {/* Nome do tutor */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2">Nome do tutor</label>
                         <input
@@ -191,6 +201,30 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             />
                             <label htmlFor="opcao_nao">Não</label>
                         </div>
+                    </div>
+
+                    {/* Vacina antirrábica */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Data da ultima vacina antirrábica</label>
+                        <input
+                            type="date"
+                            name="vacina_antirrabica"
+                            value={formData.vacina_antirrabica}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Vacina polivalente */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Data da ultima vacina polivalente</label>
+                        <input
+                            type="date"
+                            name="vacina_polivalente"
+                            value={formData.vacina_polivalente}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
                     </div>
 
                     <div className="flex justify-end space-x-3 mt-6">
