@@ -12,6 +12,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         castrado: "",
         vacina_antirrabica: "",
         vacina_polivalente: "",
+        passeia: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -30,6 +31,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     castrado: dogToEdit.castrado ?? "",
                     vacina_antirrabica: dogToEdit.vacina_antirrabica || "",
                     vacina_polivalente: dogToEdit.vacina_polivalente || "",
+                    passeia: dogToEdit.passeia ?? "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -42,6 +44,10 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         let finalValue = value;
 
         if (name === "castrado") {
+            finalValue = value === "true"
+        }
+
+        if (name === "passeia") {
             finalValue = value === "true"
         }
 
@@ -83,7 +89,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
     const buttonText = loading ? 'Salvando...' : (dogToEdit ? "Atualizar" : "Salvar");
 
     return (
-        <div className="fixed inset-0 bg-emerald-50/90 overflow-y-auto h-full w-full flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-emerald-50/90 overflow-y-auto w-full flex justify-center items-start py-8 z-50">
             <div className="bg-white p-8 rounded-md shadow-xl w-full max-w-md relative">
                 
                 <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 cursor-pointer">
@@ -181,25 +187,25 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             <input
                             type="radio"
                             name="castrado"
-                            id="opcao_sim"
+                            id="castrado_sim"
                             value="true"
                             checked={formData.castrado === true}
                             onChange={handleChange}
                             className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
                             />
-                            <label htmlFor="opcao_sim">Sim</label>
+                            <label htmlFor="castrado_sim">Sim</label>
                         </div>
                         <div>
                             <input
                             type="radio"
                             name="castrado"
-                            id="opcao_nao"
+                            id="castrado_nao"
                             value="false"
                             checked={formData.castrado === false}
                             onChange={handleChange}
                             className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
                             />
-                            <label htmlFor="opcao_nao">Não</label>
+                            <label htmlFor="castrado_nao">Não</label>
                         </div>
                     </div>
 
@@ -226,6 +232,37 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
+
+                    {/* Passeia */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet passeia?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="passeia"
+                            id="passeia_sim"
+                            value="true"
+                            checked={formData.passeia === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="passeia_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="passeia"
+                            id="passeia_nao"
+                            value="false"
+                            checked={formData.passeia === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="passeia_nao">Não</label>
+                        </div>
+                    </div>
+
+                    {/* Botão para fechar modal */}
 
                     <div className="flex justify-end space-x-3 mt-6">
                         <button

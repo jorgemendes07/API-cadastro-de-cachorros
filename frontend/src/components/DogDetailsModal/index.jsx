@@ -2,7 +2,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
     if (!isOpen || !dog) return null;
 
     return (
-        <div className="fixed inset-0 bg-emerald-50/90 overflow-y-auto h-full w-full flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-emerald-50/90 overflow-y-auto h-full w-full flex justify-center items-start py-8 z-50">
             <div className="bg-white p-8 rounded-md shadow-xl w-full max-w-md relative">
                 
                 <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 cursor-pointer">
@@ -101,6 +101,18 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                                 <span className="text-base">Não informado</span>
                             ) : (
                                 dog.vacina_polivalente
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Passeia */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Seu pet passeia?</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.passeia === null || dog.passeia === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.passeia ? "Sim" : "Não"
                             )}
                         </p>
                     </div>
