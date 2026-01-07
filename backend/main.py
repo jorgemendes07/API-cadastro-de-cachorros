@@ -18,6 +18,8 @@ class Cachorro(SQLModel, table=True):
     vacina_polivalente: date | None = Field(default=None, sa_type=String)
     passeia: bool | None = Field(default=None)
     necessidades_em_casa: bool | None = Field(default=None)
+    plano_de_saude: bool | None = Field(default=None)
+    nome_plano_de_saude: str | None = Field(default=None, max_length=100)
 
 
 # Configuração do db
