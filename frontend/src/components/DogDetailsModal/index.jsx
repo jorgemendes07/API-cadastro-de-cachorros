@@ -116,6 +116,18 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                             )}
                         </p>
                     </div>
+
+                    {/* Necessidades em casa */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Seu pet faz as necessidades em casa?</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.necessidades_em_casa === null || dog.necessidades_em_casa === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.necessidades_em_casa ? "Sim" : "Não"
+                            )}
+                        </p>
+                    </div>
                     
                     {/* ID */}
                     <div>

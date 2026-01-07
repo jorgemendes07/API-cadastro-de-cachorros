@@ -13,6 +13,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         vacina_antirrabica: "",
         vacina_polivalente: "",
         passeia: "",
+        necessidades_em_casa: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -32,6 +33,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     vacina_antirrabica: dogToEdit.vacina_antirrabica || "",
                     vacina_polivalente: dogToEdit.vacina_polivalente || "",
                     passeia: dogToEdit.passeia ?? "",
+                    necessidades_em_casa: dogToEdit.necessidades_em_casa ?? "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -48,6 +50,10 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         }
 
         if (name === "passeia") {
+            finalValue = value === "true"
+        }
+
+        if (name === "necessidades_em_casa") {
             finalValue = value === "true"
         }
 
@@ -259,6 +265,35 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
                             />
                             <label htmlFor="passeia_nao">Não</label>
+                        </div>
+                    </div>
+
+                    {/* Necessidades em casa */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet faz as necessidades em casa?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="necessidades_em_casa"
+                            id="necessidades_em_casa_sim"
+                            value="true"
+                            checked={formData.necessidades_em_casa === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="necessidades_em_casa_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="necessidades_em_casa"
+                            id="necessidades_em_casa_nao"
+                            value="false"
+                            checked={formData.necessidades_em_casa === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="necessidades_em_casa_nao">Não</label>
                         </div>
                     </div>
 
