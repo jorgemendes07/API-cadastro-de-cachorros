@@ -17,6 +17,7 @@ class Cachorro(SQLModel, table=True):
     vacina_antirrabica: date | None = Field(default=None, sa_type=String)
     vacina_polivalente: date | None = Field(default=None, sa_type=String)
     passeia: bool | None = Field(default=None)
+    necessidades_em_casa: bool | None = Field(default=None)
 
 
 # Configuração do db
