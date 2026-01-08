@@ -11,7 +11,7 @@ class Cachorro(SQLModel, table=True):
     raca: str = Field(max_length=50)
     data_nascimento: date = Field(sa_type=String)
     porte: str = Field(max_length=20)
-    nome_tutor: str | None = Field(default= None, max_length=100)
+    nome_tutor: str | None = Field(default=None, max_length=100)
     contato: str | None = Field(default=None, max_length=11)
     castrado: bool | None = Field(default=None)
     vacina_antirrabica: date | None = Field(default=None, sa_type=String)

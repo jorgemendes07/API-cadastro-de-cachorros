@@ -128,6 +128,18 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                             )}
                         </p>
                     </div>
+
+                    {/* Plano de saúde */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Seu pet possui plano de saude?</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.plano_de_saude === null || dog.plano_de_saude === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.plano_de_saude ? `Sim - ${dog.nome_plano_de_saude}` : "Não"
+                            )}
+                        </p>
+                    </div>
                     
                     {/* ID */}
                     <div>

@@ -14,6 +14,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         vacina_polivalente: "",
         passeia: "",
         necessidades_em_casa: "",
+        plano_de_saude: "",
+        nome_plano_de_saude: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -34,6 +36,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     vacina_polivalente: dogToEdit.vacina_polivalente || "",
                     passeia: dogToEdit.passeia ?? "",
                     necessidades_em_casa: dogToEdit.necessidades_em_casa ?? "",
+                    plano_de_saude: dogToEdit.plano_de_saude ?? "",
+                    nome_plano_de_saude: dogToEdit.nome_plano_de_saude || "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -54,6 +58,10 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         }
 
         if (name === "necessidades_em_casa") {
+            finalValue = value === "true"
+        }
+
+        if (name === "plano_de_saude") {
             finalValue = value === "true"
         }
 
@@ -295,6 +303,48 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             />
                             <label htmlFor="necessidades_em_casa_nao">Não</label>
                         </div>
+                    </div>
+
+                    {/* Plano de saude */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui plano de saúde?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="plano_de_saude"
+                            id="plano_de_saude_sim"
+                            value="true"
+                            checked={formData.plano_de_saude === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="plano_de_saude_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="plano_de_saude"
+                            id="plano_de_saude_nao"
+                            value="false"
+                            checked={formData.plano_de_saude === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="plano_de_saude_nao">Não</label>
+                        </div>
+
+                        {formData.plano_de_saude === true && (
+                            <div className="mt-2"> 
+                                <input
+                                    type="text"
+                                    name="nome_plano_de_saude"
+                                    value={formData.nome_plano_de_saude}
+                                    onChange={handleChange}
+                                    placeholder="Qual o nome do plano?"
+                                    className="w-full px-3 py-2 border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        )}
                     </div>
 
                     {/* Botão para fechar modal */}
