@@ -9,12 +9,12 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         porte: "Médio",
         nome_tutor: "",
         contato: "",
-        castrado: "",
+        castrado: null,
         vacina_antirrabica: "",
         vacina_polivalente: "",
-        passeia: "",
-        necessidades_em_casa: "",
-        plano_de_saude: "",
+        passeia: null,
+        necessidades_em_casa: null,
+        plano_de_saude: null,
         nome_plano_de_saude: "",
     };
 
