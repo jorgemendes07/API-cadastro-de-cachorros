@@ -20,6 +20,10 @@ class Cachorro(SQLModel, table=True):
     necessidades_em_casa: bool | None = Field(default=None)
     plano_de_saude: bool | None = Field(default=None)
     nome_plano_de_saude: str | None = Field(default=None, max_length=100)
+    contato_veterinario: str | None = Field(default=None, max_length=11)
+    endereco_clinica_veterinaria: str | None = Field(default=None, max_length=255)
+    contato_clinica_veterinaria_24_horas: str | None = Field(default=None, max_length=11)
+    endereco_clinica_veterinaria_24_horas: str | None = Field(default=None, max_length=255)
 
 
 # Configuração do db
