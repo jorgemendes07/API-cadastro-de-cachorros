@@ -140,6 +140,55 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                             )}
                         </p>
                     </div>
+
+                    {/* Contato veterinário */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Contato do veterinário</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.contato_veterinario? (
+                                dog.contato_veterinario
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Endereço clínica veterinária */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Endereço da clínica veterinária</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.endereco_clinica_veterinaria? (
+                                dog.endereco_clinica_veterinaria
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+
+                    {/* Contato clínica veterinária 24 horas */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Contato da clínica veterinária 24 horas</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.contato_clinica_veterinaria_24_horas? (
+                                dog.contato_clinica_veterinaria_24_horas
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Endereço clínica veterinária */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Endereço da clínica veterinária 24h</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.endereco_clinica_veterinaria_24_horas? (
+                                dog.endereco_clinica_veterinaria_24_horas
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
                     
                     {/* ID */}
                     <div>

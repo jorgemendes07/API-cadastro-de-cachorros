@@ -16,6 +16,10 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         necessidades_em_casa: null,
         plano_de_saude: null,
         nome_plano_de_saude: "",
+        contato_veterinario: "",
+        endereco_clinica_veterinaria: "",
+        contato_clinica_veterinaria_24_horas: "",
+        endereco_clinica_veterinaria_24_horas: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -38,6 +42,10 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     necessidades_em_casa: dogToEdit.necessidades_em_casa ?? "",
                     plano_de_saude: dogToEdit.plano_de_saude ?? "",
                     nome_plano_de_saude: dogToEdit.nome_plano_de_saude || "",
+                    contato_veterinario: dogToEdit.contato_veterinario || "",
+                    endereco_clinica_veterinaria: dogToEdit.endereco_clinica_veterinaria || "",
+                    contato_clinica_veterinaria_24_horas: dogToEdit.contato_clinica_veterinaria_24_horas || "",
+                    endereco_clinica_veterinaria_24_horas: dogToEdit.endereco_clinica_veterinaria_24_horas || "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -345,6 +353,60 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                                 />
                             </div>
                         )}
+                    </div>
+
+                    {/* Contato veterinario*/}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Contato do veterinário</label>
+                        <input
+                            type="text"
+                            name="contato_veterinario"
+                            value={formData.contato_veterinario}
+                            placeholder="Preencha apenas com números"
+                            maxLength={11}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Enderço da clínica veterinária*/}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Enderço da clínica veterinária</label>
+                        <textarea
+                            name="endereco_clinica_veterinaria"
+                            rows={2}
+                            value={formData.endereco_clinica_veterinaria}
+                            maxLength={255}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Contato clinica veterinária 24 horas */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Contato da clínica veterinária 24h</label>
+                        <input
+                            type="text"
+                            name="contato_clinica_veterinaria_24_horas"
+                            value={formData.contato_clinica_veterinaria_24_horas}
+                            placeholder="Preencha apenas com números"
+                            maxLength={11}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Endereço da clínica veterinária 24 horas*/}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Endreço da clínica veterinária 24h</label>
+                        <textarea
+                            name="endereco_clinica_veterinaria_24_horas"
+                            rows={2}
+                            value={formData.endereco_clinica_veterinaria_24_horas}
+                            maxLength={255}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
                     </div>
 
                     {/* Botão para fechar modal */}
