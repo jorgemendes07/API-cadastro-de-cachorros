@@ -9,6 +9,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         porte: "Médio",
         nome_tutor: "",
         contato: "",
+        endereco_tutor: "",
         castrado: null,
         vacina_antirrabica: "",
         vacina_polivalente: "",
@@ -35,6 +36,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     porte: dogToEdit.porte,
                     nome_tutor: dogToEdit.nome_tutor || "",
                     contato: dogToEdit.contato || "",
+                    endereco_tutor: dogToEdit.endereco_tutor || "",
                     castrado: dogToEdit.castrado ?? "",
                     vacina_antirrabica: dogToEdit.vacina_antirrabica || "",
                     vacina_polivalente: dogToEdit.vacina_polivalente || "",
@@ -197,6 +199,19 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             value={formData.contato}
                             placeholder="Preencha apenas com números"
                             maxLength={11}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Endereço do tutor*/}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Endreço do tutor</label>
+                        <textarea
+                            name="endereco_tutor"
+                            rows={2}
+                            value={formData.endereco_tutor}
+                            maxLength={255}
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
