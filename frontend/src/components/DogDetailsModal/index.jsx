@@ -69,6 +69,18 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
 
+                     {/* Contato 2 */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Contato 2</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.contato_2? (
+                                dog.contato_2
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
                     {/* Endereço do tutor */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Endereço do tutor</label>
