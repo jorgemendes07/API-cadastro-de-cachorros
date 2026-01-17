@@ -189,7 +189,6 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
 
-
                     {/* Contato clínica veterinária 24 horas */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Contato da clínica veterinária 24 horas</label>
@@ -210,6 +209,18 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                                 dog.endereco_clinica_veterinaria_24_horas
                             ) : (
                                 <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Restrição alimentar */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Seu pet possui alguma restrição alimentar?</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.restricao_alimentar === null || dog.restricao_alimentar === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.descricao_restricao_alimentar ? `Sim - ${dog.descricao_restricao_alimentar}` : "Não"
                             )}
                         </p>
                     </div>

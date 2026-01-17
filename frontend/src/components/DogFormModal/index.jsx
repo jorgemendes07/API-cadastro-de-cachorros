@@ -22,6 +22,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         endereco_clinica_veterinaria: "",
         contato_clinica_veterinaria_24_horas: "",
         endereco_clinica_veterinaria_24_horas: "",
+        restricao_alimentar: null,
+        descricao_restricao_alimentar: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -50,6 +52,8 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     endereco_clinica_veterinaria: dogToEdit.endereco_clinica_veterinaria || "",
                     contato_clinica_veterinaria_24_horas: dogToEdit.contato_clinica_veterinaria_24_horas || "",
                     endereco_clinica_veterinaria_24_horas: dogToEdit.endereco_clinica_veterinaria_24_horas || "",
+                    restricao_alimentar: dogToEdit.restricao_alimentar ?? "",
+                    descricao_restricao_alimentar: dogToEdit.descricao_restricao_alimentar || "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -74,6 +78,10 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         }
 
         if (name === "plano_de_saude") {
+            finalValue = value === "true"
+        }
+
+        if (name === "restricao_alimentar") {
             finalValue = value === "true"
         }
 
@@ -438,6 +446,49 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
+                    </div>
+
+                    {/* Restrição alimentar */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui alguma restrição alimentar?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="restricao_alimentar"
+                            id="restricao_alimentar_sim"
+                            value="true"
+                            checked={formData.restricao_alimentar === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="restricao_alimentar_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="restricao_alimentar"
+                            id="restricao_alimentar_nao"
+                            value="false"
+                            checked={formData.restricao_alimentar === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="restricao_alimentar_nao">Não</label>
+                        </div>
+
+                        {formData.restricao_alimentar === true && (
+                            <div className="mt-2"> 
+                                <textarea
+                                    name="descricao_restricao_alimentar"
+                                    rows={2}
+                                    maxLength={255}
+                                    value={formData.descricao_restricao_alimentar}
+                                    onChange={handleChange}
+                                    placeholder="Quais restrições alimentares?"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        )}
                     </div>
 
                     {/* Botão para fechar modal */}
