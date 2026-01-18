@@ -45,7 +45,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
 
-                    {/* Tutor */}
+                    {/* Nome do tutor */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Tutor</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
@@ -221,6 +221,78 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                                 <span className="text-base">Não informado</span>
                             ) : (
                                 dog.descricao_restricao_alimentar ? `Sim - ${dog.descricao_restricao_alimentar}` : "Não"
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Horário alimentação manhã */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Horário da alimentação da manhã</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.horario_alimentacao_manha? (
+                                dog.horario_alimentacao_manha
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Porção alimentação manhã */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Porção da alimentação da manhã</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.porcao_alimentacao_manha? (
+                                dog.porcao_alimentacao_manha
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Horário alimentação tarde */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Horário da alimentação da tarde</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.horario_alimentacao_tarde? (
+                                dog.horario_alimentacao_tarde
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Porção alimentação tarde */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Porção da alimentação da tarde</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.porcao_alimentacao_tarde? (
+                                dog.porcao_alimentacao_tarde
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Horário alimentação noite */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Horário da alimentação da noite</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.horario_alimentacao_noite? (
+                                dog.horario_alimentacao_noite
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Porção alimentação noite */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Porção da alimentação da noite</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.porcao_alimentacao_noite? (
+                                dog.porcao_alimentacao_noite
+                            ) : (
+                                <span>Não informado</span>
                             )}
                         </p>
                     </div>

@@ -24,6 +24,12 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         endereco_clinica_veterinaria_24_horas: "",
         restricao_alimentar: null,
         descricao_restricao_alimentar: "",
+        horario_alimentacao_manha: "",
+        porcao_alimentacao_manha: "",
+        horario_alimentacao_tarde: "",
+        porcao_alimentacao_tarde: "",
+        horario_alimentacao_noite: "",
+        porcao_alimentacao_noite: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -54,6 +60,12 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     endereco_clinica_veterinaria_24_horas: dogToEdit.endereco_clinica_veterinaria_24_horas || "",
                     restricao_alimentar: dogToEdit.restricao_alimentar ?? "",
                     descricao_restricao_alimentar: dogToEdit.descricao_restricao_alimentar || "",
+                    horario_alimentacao_manha: dogToEdit.horario_alimentacao_manha || "",
+                    porcao_alimentacao_manha: dogToEdit.porcao_alimentacao_manha || "",
+                    horario_alimentacao_tarde: dogToEdit.horario_alimentacao_tarde || "",
+                    porcao_alimentacao_tarde: dogToEdit.porcao_alimentacao_tarde || "",
+                    horario_alimentacao_noite: dogToEdit.horario_alimentacao_noite || "",
+                    porcao_alimentacao_noite: dogToEdit.porcao_alimentacao_noite || "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -490,6 +502,86 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                             </div>
                         )}
                     </div>
+
+                    {/* Horário alimentação manhã */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Horário da alimentação da manhã</label>
+                        <input
+                            type="text"
+                            name="horario_alimentacao_manha"
+                            maxLength={50}
+                            value={formData.horario_alimentacao_manha}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Porção alimentação manhã */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Porção da alimentação da manhã</label>
+                        <input
+                            type="text"
+                            name="porcao_alimentacao_manha"
+                            maxLength={100}
+                            value={formData.porcao_alimentacao_manha}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Horário alimentação tarde */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Horário da alimentação da tarde</label>
+                        <input
+                            type="text"
+                            name="horario_alimentacao_tarde"
+                            maxLength={50}
+                            value={formData.horario_alimentacao_tarde}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Porção alimentação tarde */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Porção da alimentação da tarde</label>
+                        <input
+                            type="text"
+                            name="porcao_alimentacao_tarde"
+                            maxLength={100}
+                            value={formData.porcao_alimentacao_tarde}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Horário alimentação noite */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Horário da alimentação da noite</label>
+                        <input
+                            type="text"
+                            name="horario_alimentacao_noite"
+                            maxLength={50}
+                            value={formData.horario_alimentacao_noite}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Porção alimentação noite */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Porção da alimentação da noite</label>
+                        <input
+                            type="text"
+                            name="porcao_alimentacao_noite"
+                            maxLength={100}
+                            value={formData.porcao_alimentacao_noite}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    
 
                     {/* Botão para fechar modal */}
 
