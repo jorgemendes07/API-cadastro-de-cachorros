@@ -297,6 +297,30 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                         </p>
                     </div>
                     
+                    {/* Restrição de saúde */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Restrição de saúde</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.restricao_medica === null || dog.restricao_medica === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.descricao_restricao_medica ? `Sim - ${dog.descricao_restricao_medica}` : "Não"
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Uso de medicação */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Uso de medicação</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.utiliza_medicacao === null || dog.restricao_alimentar === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.descricao_restricao_alimentar ? `Sim - ${dog.descricao_restricao_alimentar}` : "Não"
+                            )}
+                        </p>
+                    </div>
+
                     {/* ID */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">ID do Sistema</label>

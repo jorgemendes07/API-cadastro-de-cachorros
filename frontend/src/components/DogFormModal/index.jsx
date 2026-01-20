@@ -30,6 +30,10 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         porcao_alimentacao_tarde: "",
         horario_alimentacao_noite: "",
         porcao_alimentacao_noite: "",
+        restricao_medica: null,
+        descricao_restricao_medica: "",
+        utiliza_medicacao: null,
+        descricao_utiliza_medicacao: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -66,6 +70,10 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     porcao_alimentacao_tarde: dogToEdit.porcao_alimentacao_tarde || "",
                     horario_alimentacao_noite: dogToEdit.horario_alimentacao_noite || "",
                     porcao_alimentacao_noite: dogToEdit.porcao_alimentacao_noite || "",
+                    restricao_medica: dogToEdit.restricao_medica ?? "",
+                    descricao_restricao_medica: dogToEdit.descricao_restricao_medica || "",
+                    utiliza_medicacao: dogToEdit.utiliza_medicacao ?? "",
+                    descricao_utiliza_medicacao: dogToEdit.descricao_utiliza_medicacao || "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -94,6 +102,14 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         }
 
         if (name === "restricao_alimentar") {
+            finalValue = value === "true"
+        }
+
+        if (name === "restricao_medica") {
+            finalValue = value === "true"
+        }
+
+        if (name === "utiliza_medicacao") {
             finalValue = value === "true"
         }
 
@@ -581,7 +597,91 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                         />
                     </div>
 
-                    
+                    {/* Restrição de saude */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui alguma restrição de saúde que influencia na rotina do animal?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="restricao_medica"
+                            id="restricao_medica_sim"
+                            value="true"
+                            checked={formData.restricao_medica === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="restricao_medica_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="restricao_medica"
+                            id="restricao_medica_nao"
+                            value="false"
+                            checked={formData.restricao_medica === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="restricao_medica_nao">Não</label>
+                        </div>
+
+                        {formData.restricao_medica === true && (
+                            <div className="mt-2"> 
+                                <textarea
+                                    name="descricao_restricao_medica"
+                                    rows={2}
+                                    maxLength={255}
+                                    value={formData.descricao_restricao_medica}
+                                    onChange={handleChange}
+                                    placeholder="Quais restrições de saúde?"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Uso de medicamento */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet faz uso de alguma medicação?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="utiliza_medicacao"
+                            id="utiliza_medicacao_sim"
+                            value="true"
+                            checked={formData.utiliza_medicacao === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="utiliza_medicacao_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="utiliza_medicacao"
+                            id="utiliza_medicacao_nao"
+                            value="false"
+                            checked={formData.utiliza_medicacao === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="utiliza_medicacao_nao">Não</label>
+                        </div>
+
+                        {formData.utiliza_medicacao === true && (
+                            <div className="mt-2"> 
+                                <textarea
+                                    name="descricao_utiliza_medicacao"
+                                    rows={2}
+                                    maxLength={500}
+                                    value={formData.descricao_utiliza_medicacao}
+                                    onChange={handleChange}
+                                    placeholder="Quais medicações e quais horários?"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        )}
+                    </div>
 
                     {/* Botão para fechar modal */}
 
