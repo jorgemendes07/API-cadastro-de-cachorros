@@ -47,7 +47,7 @@ class Cachorro(SQLModel, table=True):
     descricao_experiencia_com_hospedagem: str | None = Field(default=None, max_length=255)
     posse_alimento: bool | None = Field(default=None)
     posse_objeto: bool | None = Field(default=None)
-    descricao_posse_objeto: str | None = Field(default=None, max_length=100)
+    descricao_posse_objeto: str | None = Field(default=None, max_length=255)
 
 # Configuração do db
 sqlite_file_name = "cachorros.db"
