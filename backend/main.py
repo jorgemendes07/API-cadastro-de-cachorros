@@ -35,7 +35,7 @@ class Cachorro(SQLModel, table=True):
     horario_alimentacao_noite: str | None = Field(default=None, max_length=50)
     porcao_alimentacao_noite: str | None = Field(default=None, max_length=100)
     restricao_medica: bool | None = Field(default=None)
-    descricao_restricao_medica: str | None= Field(default=None, max_length=100)
+    descricao_restricao_medica: str | None= Field(default=None, max_length=255)
     utiliza_medicacao: bool | None = Field(default=None)
     descricao_utiliza_medicacao: str | None = Field(default=None, max_length=500)
     comportamento: str | None = Field(default=None, max_length=1000)
