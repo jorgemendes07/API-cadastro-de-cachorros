@@ -34,6 +34,16 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         descricao_restricao_medica: "",
         utiliza_medicacao: null,
         descricao_utiliza_medicacao: "",
+        comportamento: "",
+        medo: "",
+        relacionamento_com_outros_animais: "",
+        relacionamento_com_pessoas: "",
+        dependente: null,
+        experiencia_com_hospedagem: null,
+        descricao_experiencia_com_hospedagem: "",
+        posse_alimento: null,
+        posse_objeto: null,
+        descricao_posse_objeto: "",
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -74,6 +84,16 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     descricao_restricao_medica: dogToEdit.descricao_restricao_medica || "",
                     utiliza_medicacao: dogToEdit.utiliza_medicacao ?? "",
                     descricao_utiliza_medicacao: dogToEdit.descricao_utiliza_medicacao || "",
+                    comportamento: dogToEdit.comportamento || "",
+                    medo: dogToEdit.medo ?? "",
+                    relacionamento_com_outros_animais: dogToEdit.relacionamento_com_outros_animais || "",
+                    relacionamento_com_pessoas: dogToEdit.relacionamento_com_pessoas || "",
+                    dependente: dogToEdit.dependente ?? "",
+                    experiencia_com_hospedagem: dogToEdit.experiencia_com_hospedagem ?? "",
+                    descricao_experiencia_com_hospedagem: dogToEdit.descricao_experiencia_com_hospedagem || "",
+                    posse_alimento: dogToEdit.posse_alimento ?? "",
+                    posse_objeto: dogToEdit.posse_objeto ?? "",
+                    descricao_posse_objeto: dogToEdit.descricao_posse_objeto || "",
                 });
             } else {
                 setFormData(initialFormState);
@@ -110,6 +130,26 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         }
 
         if (name === "utiliza_medicacao") {
+            finalValue = value === "true"
+        }
+
+        if (name === "medo") {
+            finalValue = value === "true"
+        }
+
+        if (name === "dependente") {
+            finalValue = value === "true"
+        }
+
+        if (name === "experiencia_com_hospedagem") {
+            finalValue = value === "true"
+        }
+
+        if (name === "posse_alimento") {
+            finalValue = value === "true"
+        }
+
+        if (name === "posse_objeto") {
             finalValue = value === "true"
         }
 
@@ -683,8 +723,203 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                         )}
                     </div>
 
-                    {/* Botão para fechar modal */}
+                    {/* comportamento */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Como é o comportamento do seu pet?</label>
+                        <textarea
+                            rows={2}
+                            name="comportamento"
+                            maxLength={1000}
+                            value={formData.comportamento}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
 
+                    {/* medo */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet tem medo de alguma coisa?</label>
+                        <textarea
+                            rows={2}
+                            name="medo"
+                            maxLength={1000}
+                            value={formData.medo}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* relacionamento com outros animais */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Como o seu pet se relaciona com outros animais?</label>
+                        <textarea
+                            rows={2}
+                            name="relacionamento_com_outros_animais"
+                            maxLength={1000}
+                            value={formData.relacionamento_com_outros_animais}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* relacionamento com outras pessoas */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Como o seu pet se relaciona com novas pessoas?</label>
+                        <textarea
+                            rows={2}
+                            name="relacionamento_com_pessoas"
+                            maxLength={1000}
+                            value={formData.relacionamento_com_pessoas}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* dependência */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet é dependente de você?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="dependente"
+                            id="dependente_sim"
+                            value="true"
+                            checked={formData.dependente === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="dependente_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="dependente"
+                            id="dependente_nao"
+                            value="false"
+                            checked={formData.dependente === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="dependente_nao">Não</label>
+                        </div>
+                    </div>
+
+                    {/* Experiência com hospedagem */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet já frequentou creche, hotel ou doghero?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="experiencia_com_hospedagem"
+                            id="experiencia_com_hospedagem_sim"
+                            value="true"
+                            checked={formData.experiencia_com_hospedagem === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="experiencia_com_hospedagem_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="experiencia_com_hospedagem"
+                            id="experiencia_com_hospedagem_nao"
+                            value="false"
+                            checked={formData.experiencia_com_hospedagem === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="experiencia_com_hospedagem_nao">Não</label>
+                        </div>
+
+                        {formData.experiencia_com_hospedagem === true && (
+                            <div className="mt-2"> 
+                                <textarea
+                                    name="descricao_experiencia_com_hospedagem"
+                                    rows={2}
+                                    maxLength={255}
+                                    value={formData.descricao_experiencia_com_hospedagem}
+                                    onChange={handleChange}
+                                    placeholder="Quais?"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        )}
+                    </div>
+
+                    {/* posse com alimentos */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui posse com alimentos?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="posse_alimento"
+                            id="posse_alimento_sim"
+                            value="true"
+                            checked={formData.posse_alimento === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="posse_alimento_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="posse_alimento"
+                            id="posse_alimento_nao"
+                            value="false"
+                            checked={formData.posse_alimento === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="posse_alimento_nao">Não</label>
+                        </div>
+                    </div>
+
+                    {/* Posse com objetos */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet tem posse com algum objeto?</label>
+                        <div>
+                            <input
+                            type="radio"
+                            name="posse_objeto"
+                            id="posse_objeto_sim"
+                            value="true"
+                            checked={formData.posse_objeto === true}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="posse_objeto_sim">Sim</label>
+                        </div>
+                        <div>
+                            <input
+                            type="radio"
+                            name="posse_objeto"
+                            id="posse_objeto_nao"
+                            value="false"
+                            checked={formData.posse_objeto === false}
+                            onChange={handleChange}
+                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
+                            />
+                            <label htmlFor="posse_objeto_nao">Não</label>
+                        </div>
+
+                        {formData.posse_objeto === true && (
+                            <div className="mt-2"> 
+                                <textarea
+                                    name="descricao_posse_objeto"
+                                    rows={2}
+                                    maxLength={100}
+                                    value={formData.descricao_posse_objeto}
+                                    onChange={handleChange}
+                                    placeholder="Quais?"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Botão para fechar modal */}
                     <div className="flex justify-end space-x-3 mt-6">
                         <button
                             type="button"
