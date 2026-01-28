@@ -133,10 +133,6 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
             finalValue = value === "true"
         }
 
-        if (name === "medo") {
-            finalValue = value === "true"
-        }
-
         if (name === "dependente") {
             finalValue = value === "true"
         }
