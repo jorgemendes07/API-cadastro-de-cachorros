@@ -3,6 +3,8 @@ from sqlmodel import Field, SQLModel, create_engine, Session, select
 from sqlalchemy import String
 from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+import os
 
 # Model
 class Cachorro(SQLModel, table=True):
@@ -68,6 +70,12 @@ def get_session():
         session.close()
 
 app = FastAPI()
+
+# Caminho absoluto para a pasta dist do frontend
+frontend_path = os.path.join(os.path.dirname(__file__), "../frontend/dist")
+
+# Monta os arquivos estáticos
+app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
 
 # Configuração do CORS
 origins = [
