@@ -78,9 +78,7 @@ frontend_path = os.path.join(os.path.dirname(__file__), "../frontend/dist")
 app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
 
 # Configuração do CORS
-origins = [
-    "http://localhost:5173"
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
