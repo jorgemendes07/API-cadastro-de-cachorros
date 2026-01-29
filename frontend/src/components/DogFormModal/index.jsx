@@ -905,7 +905,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                                 <textarea
                                     name="descricao_posse_objeto"
                                     rows={2}
-                                    maxLength={100}
+                                    maxLength={255}
                                     value={formData.descricao_posse_objeto}
                                     onChange={handleChange}
                                     placeholder="Quais?"

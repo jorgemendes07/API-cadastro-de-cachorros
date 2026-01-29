@@ -7,7 +7,7 @@ engine = create_engine(sqlite_url)
 
 def adicionar_coluna():
     with Session(engine) as session:
-        comando = text("ALTER TABLE cachorro ADD COLUMN contato_2 TEXT")
+        comando = text("ALTER TABLE cachorro ADD COLUMN descricao_posse_objeto TEXT")
 
         try:
             session.exec(comando)

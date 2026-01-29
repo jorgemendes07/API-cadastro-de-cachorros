@@ -313,10 +313,106 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
                     <div>
                         <label className="block text-gray-700 text-sm font-bold">Uso de medicação</label>
                         <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
-                            {dog.utiliza_medicacao === null || dog.restricao_alimentar === undefined ? (
+                            {dog.utiliza_medicacao === null || dog.utiliza_medicacao === undefined ? (
                                 <span className="text-base">Não informado</span>
                             ) : (
-                                dog.descricao_restricao_alimentar ? `Sim - ${dog.descricao_restricao_alimentar}` : "Não"
+                                dog.descricao_utiliza_medicacao ? `Sim - ${dog.descricao_utiliza_medicacao}` : "Não"
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Comportamento */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Comportamento do pet</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.comportamento? (
+                                dog.comportamento
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Medos do pet */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Medos do pet</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.medo? (
+                                dog.medo
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Relacionamento com outros animais */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Relacionamento com outros animais</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.relacionamento_com_outros_animais? (
+                                dog.relacionamento_com_outros_animais
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Relacionamento com pessoas */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Relacionamento com novas pessoas</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.relacionamento_com_pessoas? (
+                                dog.relacionamento_com_pessoas
+                            ) : (
+                                <span>Não informado</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Dependecia com o tutor */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Dependente?</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.dependente === null || dog.dependente === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.dependente ? "Sim" : "Não"
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Experiencia com hospedagens */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Experiencias com hospedagens ou creches</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.experiencia_com_hospedagem === null || dog.experiencia_com_hospedagem === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.descricao_experiencia_com_hospedagem ? `Sim - ${dog.descricao_experiencia_com_hospedagem}` : "Não"
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Posse com alimentos */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Posse com alimentos</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.posse_alimento === null || dog.posse_alimento === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.posse_alimento ? "Sim" : "Não"
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Posse com objetos */}
+                    <div>
+                        <label className="block text-gray-700 text-sm font-bold">Posse com objetos</label>
+                        <p className="w-full py-2 border-b border-gray-200 text-gray-900 text-lg">
+                            {dog.posse_objeto === null || dog.posse_objeto === undefined ? (
+                                <span className="text-base">Não informado</span>
+                            ) : (
+                                dog.descricao_posse_objeto ? `Sim - ${dog.descricao_posse_objeto}` : "Não"
                             )}
                         </p>
                     </div>
