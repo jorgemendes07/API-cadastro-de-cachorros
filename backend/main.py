@@ -1,9 +1,8 @@
 from datetime import date # validação de datas
 from sqlmodel import Field, SQLModel, create_engine, Session, select
-from sqlalchemy import String
+from sqlalchemy import String, Date
 from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 import os
 
 # Model
@@ -52,10 +51,14 @@ class Cachorro(SQLModel, table=True):
     descricao_posse_objeto: str | None = Field(default=None, max_length=255)
 
 # Configuração do db
-sqlite_file_name = "cachorros.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
 
-engine = create_engine(sqlite_url, connect_args={"check_same_thread": False})
+DB_PATH = os.getenv("DB_PATH", "cachorros.db")
+DATABASE_URL = f"sqlite:///{DB_PATH}"
+
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={"check_same_thread": False}
+)
 
 # Cria a tabela
 def create_db_and_tables():
@@ -73,9 +76,6 @@ app = FastAPI()
 
 # Caminho absoluto para a pasta dist do frontend
 frontend_path = os.path.join(os.path.dirname(__file__), "../frontend/dist")
-
-# Monta os arquivos estáticos
-app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
 
 # Configuração do CORS
 origins = ["*"]
