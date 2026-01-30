@@ -10,15 +10,15 @@ class Cachorro(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     nome: str = Field(index=True, max_length=100)
     raca: str = Field(max_length=50)
-    data_nascimento: date = Field(sa_type=String)
+    data_nascimento: date | None = Field(default=None, sa_type=Date)
     porte: str = Field(max_length=20)
     nome_tutor: str | None = Field(default=None, max_length=100)
     contato: str | None = Field(default=None, max_length=11)
     contato_2: str | None = Field(default=None, max_length=11)
     endereco_tutor: str | None = Field(default=None, max_length=255)
     castrado: bool | None = Field(default=None)
-    vacina_antirrabica: date | None = Field(default=None, sa_type=String)
-    vacina_polivalente: date | None = Field(default=None, sa_type=String)
+    vacina_antirrabica: date | None = Field(default=None, sa_type=Date)
+    vacina_polivalente: date | None = Field(default=None, sa_type=Date)
     passeia: bool | None = Field(default=None)
     necessidades_em_casa: bool | None = Field(default=None)
     plano_de_saude: bool | None = Field(default=None)
@@ -75,11 +75,10 @@ def get_session():
 app = FastAPI()
 
 # Configuração do CORS
-origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
