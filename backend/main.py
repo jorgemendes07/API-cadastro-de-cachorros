@@ -74,9 +74,6 @@ def get_session():
 
 app = FastAPI()
 
-# Caminho absoluto para a pasta dist do frontend
-frontend_path = os.path.join(os.path.dirname(__file__), "../frontend/dist")
-
 # Configuração do CORS
 origins = ["*"]
 
