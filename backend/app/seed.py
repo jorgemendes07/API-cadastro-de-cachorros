@@ -1,6 +1,7 @@
 from datetime import date
 from sqlmodel import Session, delete
-from main import engine, Cachorro
+from app.db import engine
+from app.models import Cachorro
 
 def seed_database():
     with Session(engine) as session:
