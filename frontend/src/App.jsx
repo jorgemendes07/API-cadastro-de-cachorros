@@ -14,12 +14,16 @@ function App() {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [viewingDog, setViewingDog] = useState(null);
 
+  const API_BASE = "http://98.93.31.6:8000/api";
+
   const fetchCachorros = async (criterio = "nome") => {
     try {
-      const response = await axios.get(`/api/cachorros?ordenar_por=${criterio}`);
+      const response = await axios.get(
+        `${API_BASE}/cachorros?ordenar_por=${criterio}`
+      );
       setCachorros(response.data);
     } catch (error) {
-      console.error("Erro ao buscar cachorror: ", error)
+      console.error("Erro ao buscar cachorros:", error);
     }
   };
 
@@ -33,7 +37,7 @@ function App() {
     if (!confirmacao) return;
 
     try {
-      await axios.delete(`/api/cachorros/${id}`);
+      await axios.delete(`${API_BASE}/cachorros/${id}`);
 
       alert("Cachorro excluído com sucesso!");
 
