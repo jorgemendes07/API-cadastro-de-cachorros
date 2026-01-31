@@ -1,4 +1,13 @@
+node_modules
+
+dist/
+build/
+
+*.log
+.DS_Store
+
 __pycache__/
+*.db
 *.pyc
 
-*.db
+.env
