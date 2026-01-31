@@ -27,7 +27,7 @@ app.add_middleware(
 )
 
 # Criar Cachorro
-@app.post("/cachorros", response_model=Cachorro)
+@app.post("/api/cachorros", response_model=Cachorro)
 def cadastrar_cachorro(cachorro: Cachorro, session: Session = Depends(get_session)):
     session.add(cachorro)
     session.commit()
@@ -35,7 +35,7 @@ def cadastrar_cachorro(cachorro: Cachorro, session: Session = Depends(get_sessio
     return cachorro
 
 # Listar todos os cachorros
-@app.get("/cachorros", response_model=list[Cachorro])
+@app.get("/api/cachorros", response_model=list[Cachorro])
 def listar_cachorros(
     session: Session = Depends(get_session),
     ordenar_por: str = Query("nome", enum=["nome", "raca", "porte"])
@@ -53,7 +53,7 @@ def listar_cachorros(
     return cachorros
 
 # Visualizar Cachorro pela id
-@app.get("/cachorros/{cachorro_id}", response_model=Cachorro)
+@app.get("/api/cachorros/{cachorro_id}", response_model=Cachorro)
 def selecionar_cachorro_pelo_id(cachorro_id: int, session: Session = Depends(get_session)):
     cachorro_selecionado = session.get(Cachorro, cachorro_id)
     if not cachorro_selecionado:
@@ -61,7 +61,7 @@ def selecionar_cachorro_pelo_id(cachorro_id: int, session: Session = Depends(get
     return cachorro_selecionado
 
 # Atualizar Cachorro
-@app.put("/cachorros/{cachorro_id}", response_model=Cachorro)
+@app.put("/api/cachorros/{cachorro_id}", response_model=Cachorro)
 def atualizar_cachorro(cachorro_id: int, novos_dados: Cachorro, session: Session = Depends(get_session)):
     cachorro_selecionado = session.get(Cachorro, cachorro_id)
     if not cachorro_selecionado:
@@ -79,7 +79,7 @@ def atualizar_cachorro(cachorro_id: int, novos_dados: Cachorro, session: Session
     return cachorro_selecionado
 
 # Deletar Cachorro
-@app.delete("/cachorros/{cachorro_id}")
+@app.delete("/api/cachorros/{cachorro_id}")
 def deletar_cachorro(cachorro_id: int, session: Session = Depends(get_session)):
         cachorro_selecionado = session.get(Cachorro, cachorro_id)
         if not cachorro_selecionado:
