@@ -16,7 +16,7 @@ function App() {
 
   const fetchCachorros = async (criterio = "nome") => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/cachorros?ordenar_por=${criterio}`);
+      const response = await axios.get(`/api/cachorros?ordenar_por=${criterio}`);
       setCachorros(response.data);
     } catch (error) {
       console.error("Erro ao buscar cachorror: ", error)
@@ -33,7 +33,7 @@ function App() {
     if (!confirmacao) return;
 
     try {
-      await axios.delete(`http://127.0.0.1:8000/cachorros/${id}`);
+      await axios.delete(`/api/cachorros/${id}`);
 
       alert("Cachorro excluído com sucesso!");
 
