@@ -9,10 +9,7 @@ from app.seed import seed_database
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     SQLModel.metadata.create_all(engine, checkfirst=True)
-    seed_database()
-    print("Banco criado e pupulado")
     yield
-    print("API encerrada")
 
 app = FastAPI(lifespan=lifespan)
 
