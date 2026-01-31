@@ -1,20 +1,19 @@
-from datetime import date
 from sqlmodel import SQLModel, Field
-from sqlalchemy import Date
+from pydantic import field_validator
 
 class Cachorro(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     nome: str = Field(index=True, max_length=100)
     raca: str = Field(max_length=50)
-    data_nascimento: date | None = Field(default=None, sa_type=Date)
+    data_nascimento: str | None = Field(default=None)
     porte: str = Field(max_length=20)
     nome_tutor: str | None = Field(default=None, max_length=100)
     contato: str | None = Field(default=None, max_length=11)
     contato_2: str | None = Field(default=None, max_length=11)
     endereco_tutor: str | None = Field(default=None, max_length=255)
     castrado: bool | None = Field(default=None)
-    vacina_antirrabica: date | None = Field(default=None, sa_type=Date)
-    vacina_polivalente: date | None = Field(default=None, sa_type=Date)
+    vacina_antirrabica: str | None = Field(default=None)
+    vacina_polivalente: str | None = Field(default=None)
     passeia: bool | None = Field(default=None)
     necessidades_em_casa: bool | None = Field(default=None)
     plano_de_saude: bool | None = Field(default=None)
@@ -45,3 +44,10 @@ class Cachorro(SQLModel, table=True):
     posse_alimento: bool | None = Field(default=None)
     posse_objeto: bool | None = Field(default=None)
     descricao_posse_objeto: str | None = Field(default=None, max_length=255)
+
+    @field_validator("data_nascimento", "vacina_antirrabica", "vacina_polivalente", mode="before")
+    @classmethod
+    def tratar_datas(cls, v):
+        if not v or v == "":
+            return None
+        return v

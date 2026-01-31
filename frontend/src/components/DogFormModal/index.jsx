@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_BASE = import.meta.env.VITE_API_BASE;
+
 export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
     const initialFormState = {
         nome: "",
@@ -59,7 +61,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                     porte: dogToEdit.porte,
                     nome_tutor: dogToEdit.nome_tutor || "",
                     contato: dogToEdit.contato || "",
-                    contato_3: dogToEdit.contato_2 || "",
+                    contato_2: dogToEdit.contato_2 || "",
                     endereco_tutor: dogToEdit.endereco_tutor || "",
                     castrado: dogToEdit.castrado ?? "",
                     vacina_antirrabica: dogToEdit.vacina_antirrabica || "",
@@ -159,12 +161,26 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         e.preventDefault();
         setLoading(true);
 
+        const dadosParaEnviar = { ...formData };
+
+        if (dadosParaEnviar.vacina_antirrabica === "") {
+            dadosParaEnviar.vacina_antirrabica = null;
+        }
+
+        if (dadosParaEnviar.vacina_polivalente === "") {
+            dadosParaEnviar.vacina_polivalente = null;
+        }
+
+        if (dadosParaEnviar.data_nascimento === "") {
+            dadosParaEnviar.data_nascimento = null;
+        }
+        
         try {
             if (dogToEdit) {
-                await axios.put(`http://127.0.0.1:8000/cachorros/${dogToEdit.id}`, formData);
+                await axios.put(`${API_BASE}/cachorros/${dogToEdit.id}`, formData);
                 alert("Cachorro atualizado com sucesso!");
             } else {
-                await axios.post("http://127.0.0.1:8000/cachorros", formData);
+                await axios.post(`${API_BASE}/cachorros`, formData);
             alert("Cachorro cadastrado com sucesso!");
             }
 

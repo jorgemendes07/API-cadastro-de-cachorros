@@ -9,6 +9,10 @@ from app.seed import seed_database
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     SQLModel.metadata.create_all(engine, checkfirst=True)
+    try:
+        seed_database()
+    except Exception as e:
+        print(f"Erro ao rodar seed: {e}")
     yield
 
 app = FastAPI(lifespan=lifespan)

@@ -4,3 +4,5 @@ sqlmodel==0.0.27
 SQLAlchemy==2.0.44
 python-dotenv==1.2.1
 pydantic==2.12.4
+uvloop==0.22.1
+httpx==0.28.1

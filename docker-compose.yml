@@ -1,0 +1,37 @@
+services:
+  # Serviço do Backend (Python)
+  backend:
+    build: ./backend
+    container_name: api-cachorros
+    restart: always
+    environment:
+      # Diz ao Python para salvar o banco em /data/cachorros.db
+      - DB_PATH=/data/cachorros.db
+    volumes:
+      # Mapeia uma pasta do seu computador para dentro do container
+      # Assim, o banco fica salvo no seu PC e não morre com o container
+      - ./dados_do_banco:/data
+    networks:
+      - minha-rede
+
+  # Serviço do Frontend (Nginx + React)
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Aqui injetamos a variável!
+        # Usamos /api relativo porque o Nginx vai fazer o proxy reverso
+        - VITE_API_BASE=/api
+    container_name: site-cachorros
+    restart: always
+    ports:
+      # A porta 80 do seu PC vai dar na porta 80 do container
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - minha-rede
+
+networks:
+  minha-rede:
+    driver: bridge

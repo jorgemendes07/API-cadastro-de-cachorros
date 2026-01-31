@@ -14,7 +14,7 @@ function App() {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [viewingDog, setViewingDog] = useState(null);
 
-  const API_BASE = "http://98.93.31.6:8000/api";
+  const API_BASE = import.meta.env.VITE_API_BASE;
 
   const fetchCachorros = async (criterio = "nome") => {
     try {
