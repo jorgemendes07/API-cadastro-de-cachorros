@@ -157,7 +157,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                 await axios.post(`${API_BASE}/cachorros`, formData);
             alert("Cachorro cadastrado com sucesso!");
             }
-7
+
             setFormData(initialFormState);
             onSuccess();
             onClose();
