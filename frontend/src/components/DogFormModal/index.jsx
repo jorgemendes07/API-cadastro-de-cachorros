@@ -107,47 +107,21 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
         const { name, value } = e.target;
         let finalValue = value;
 
-        if (name === "castrado") {
-            finalValue = value === "true"
-        }
+        const camposBooleanos = [
+            "castrado",
+            "passeia",
+            "necessidades_em_casa",
+            "plano_de_saude",
+            "restricao_alimentar",
+            "restricao_medica",
+            "utiliza_medicacao",
+            "dependente",
+            "experiencia_com_hospedagem",
+            "posse_alimento",
+            "posse_objeto"
+        ]
 
-        if (name === "passeia") {
-            finalValue = value === "true"
-        }
-
-        if (name === "necessidades_em_casa") {
-            finalValue = value === "true"
-        }
-
-        if (name === "plano_de_saude") {
-            finalValue = value === "true"
-        }
-
-        if (name === "restricao_alimentar") {
-            finalValue = value === "true"
-        }
-
-        if (name === "restricao_medica") {
-            finalValue = value === "true"
-        }
-
-        if (name === "utiliza_medicacao") {
-            finalValue = value === "true"
-        }
-
-        if (name === "dependente") {
-            finalValue = value === "true"
-        }
-
-        if (name === "experiencia_com_hospedagem") {
-            finalValue = value === "true"
-        }
-
-        if (name === "posse_alimento") {
-            finalValue = value === "true"
-        }
-
-        if (name === "posse_objeto") {
+        if (camposBooleanos.includes(name)) {
             finalValue = value === "true"
         }
 
@@ -183,7 +157,7 @@ export default function DogFormModal({isOpen, onClose, onSuccess, dogToEdit}) {
                 await axios.post(`${API_BASE}/cachorros`, formData);
             alert("Cachorro cadastrado com sucesso!");
             }
-
+7
             setFormData(initialFormState);
             onSuccess();
             onClose();
