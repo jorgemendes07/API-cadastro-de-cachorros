@@ -78,11 +78,14 @@ function App() {
   }
 
   return (
+    
     <div className="min-h-screen bg-emerald-100 p-8">
-        <div className="w-[90%] mx-auto flex justify-between items-center">
+        <div className="w-[95%] mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-4">
             <h1 className="text-3xl font-bold text-gray-800">Gerenciamento de cadastros</h1>
             
-            <CreateButton onClick={handleOpenCreateModal} />
+            <CreateButton
+          onClick={handleOpenCreateModal} 
+        />
         </div>
 
         <DogTable 

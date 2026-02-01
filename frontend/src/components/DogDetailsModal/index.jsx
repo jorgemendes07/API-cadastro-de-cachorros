@@ -3,7 +3,7 @@ export default function DogDetailsModal({ isOpen, onClose, dog }) {
 
     return (
         <div className="fixed inset-0 bg-emerald-50/90 overflow-y-auto h-full w-full flex justify-center items-start py-8 z-50">
-            <div className="bg-white p-8 rounded-md shadow-xl w-full max-w-md relative">
+            <div className="bg-white p-8 rounded-md shadow-xl w-[90%] max-w-md relative">
                 
                 <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 cursor-pointer">
                     <i className="fa-solid fa-xmark text-xl"></i>
