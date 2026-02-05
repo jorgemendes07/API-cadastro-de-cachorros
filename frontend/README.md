@@ -1,16 +1,98 @@
-# React + Vite
+# Gerenciamento para hospedagens de cachorros
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web full stack para cadastro e gerenciamento de cachorros, desenvolvida com FastAPI no backend e React no frontend.
 
-Currently, two official plugins are available:
+O projeto foi criado com foco em organização do código, separação de responsabilidades e comunicação entre frontend e backend por meio de uma API REST.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Demo: http://52.23.239.39/
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologias utilizadas
 
-## Expanding the ESLint configuration
+### Backend
+- Python
+- FastAPI
+- SQLAlchemy
+- Pydantic
+- Banco de dados relacional
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- React
+- JavaScript
+- HTML
+- CSS
+- Axios
+
+---
+
+## Funcionalidades
+
+- Cadastro de cachorros
+- Listagem de registros
+- Visualização de detalhes
+- Atualização de dados
+- Remoção de registros
+- Consumo de API REST no frontend
+
+---
+
+## Organização do projeto
+
+O backend segue uma estrutura organizada, com separação entre:
+- rotas
+- regras de negócio
+- modelos
+- schemas
+
+O frontend consome a API utilizando requisições HTTP e realiza o gerenciamento de estado da aplicação de forma simples e clara.
+
+---
+
+## Como rodar o projeto localmente
+
+### Backend
+
+Crie e ative um ambiente virtual:
+
+```bash
+python -m venv venv
+source venv/bin/activate 
+```
+
+Instale as dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+Inicie a aplicação
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Popular dados para demonstração:
+
+```bash
+python seed.py
+```
+
+### Frontend
+
+Instale as dependencias:
+
+```bash
+npm install
+```
+
+Inicie a aplicação
+
+```bash
+npm run dev
+```
+o frontend estará disponível em:
+
+```bash
+http://localhost:5173
+```
