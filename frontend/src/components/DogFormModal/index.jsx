@@ -1,4 +1,5 @@
 import { useDogForm } from "../../hooks/useDogForm";
+import TextField from "../TextField";
 
 export default function DogFormModal({
     isOpen,
@@ -36,14 +37,13 @@ export default function DogFormModal({
                 <form onSubmit={handleSubmit} className="space-y-4">
 
                     {/* Nome */}
+                    
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Nome</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Nome"
                             name="nome"
                             value={formData.nome}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
                         />
                     </div>
