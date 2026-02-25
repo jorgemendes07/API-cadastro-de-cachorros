@@ -37,26 +37,25 @@ export default function DogFormModal({
                 <form onSubmit={handleSubmit} className="space-y-4">
 
                     {/* Nome */}
-                    
                     <div>
                         <TextField 
                             label="Nome"
                             name="nome"
                             value={formData.nome}
                             onChange={handleChange}
+                            maxLenght={100}
                             required
                         />
                     </div>
                     
                     {/* Raça */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Raça</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Raça"
                             name="raca"
                             value={formData.raca}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLenght={50}
                             required
                         />
                     </div>
@@ -91,41 +90,36 @@ export default function DogFormModal({
 
                     {/* Nome do tutor */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Nome do tutor</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Nome do tutor"
                             name="nome_tutor"
                             value={formData.nome_tutor}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLenght={100}
                         />
                     </div>
 
                     {/* Contato */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Contato</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Contato 1"
                             name="contato"
                             value={formData.contato}
-                            placeholder="Preencha apenas com números"
-                            maxLength={11}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLenght={11}
+                            placeHolder="Preencha apenas com números"
                         />
                     </div>
 
                     {/* Contato 2*/}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Contato 2</label>
-                        <input
-                            type="text"
-                            name="contato_2"
-                            value={formData.contato_2}
-                            placeholder="Preencha apenas com números"
-                            maxLength={11}
+                        <TextField 
+                            label="Contato 2"
+                            name="contato2"
+                            value={formData.contato2}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLenght={11}
+                            placeHolder="Preencha apenas com números"
                         />
                     </div>
 
@@ -297,15 +291,13 @@ export default function DogFormModal({
 
                     {/* Contato veterinario*/}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Contato do veterinário</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Contato do veterinário"
                             name="contato_veterinario"
                             value={formData.contato_veterinario}
-                            placeholder="Preencha apenas com números"
-                            maxLength={11}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLenght={11}
+                            placeHolder="Preencha apenas com números"
                         />
                     </div>
 
@@ -324,15 +316,13 @@ export default function DogFormModal({
 
                     {/* Contato clinica veterinária 24 horas */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Contato da clínica veterinária 24h</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Contato da clínica veterinária 24h"
                             name="contato_clinica_veterinaria_24_horas"
                             value={formData.contato_clinica_veterinaria_24_horas}
-                            placeholder="Preencha apenas com números"
-                            maxLength={11}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLenght={11}
+                            placeHolder="Preencha apenas com números"
                         />
                     </div>
 
@@ -394,79 +384,67 @@ export default function DogFormModal({
 
                     {/* Horário alimentação manhã */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Horário da alimentação da manhã</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Horário da alimentação da manhã"
                             name="horario_alimentacao_manha"
-                            maxLength={50}
                             value={formData.horario_alimentacao_manha}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLength={50}
                         />
                     </div>
 
                     {/* Porção alimentação manhã */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Porção da alimentação da manhã</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Porção da alimentação da manhã"
                             name="porcao_alimentacao_manha"
-                            maxLength={100}
                             value={formData.porcao_alimentacao_manha}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLength={100}
                         />
                     </div>
 
                     {/* Horário alimentação tarde */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Horário da alimentação da tarde</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Horário da alimentação da tarde"
                             name="horario_alimentacao_tarde"
-                            maxLength={50}
                             value={formData.horario_alimentacao_tarde}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLength={50}
                         />
                     </div>
 
                     {/* Porção alimentação tarde */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Porção da alimentação da tarde</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Porção da alimentação da tarde"
                             name="porcao_alimentacao_tarde"
-                            maxLength={100}
                             value={formData.porcao_alimentacao_tarde}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLength={100}
                         />
                     </div>
 
                     {/* Horário alimentação noite */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Horário da alimentação da noite</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Horário da alimentação da noite"
                             name="horario_alimentacao_noite"
-                            maxLength={50}
                             value={formData.horario_alimentacao_noite}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLength={50}
                         />
                     </div>
 
                     {/* Porção alimentação noite */}
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Porção da alimentação da noite</label>
-                        <input
-                            type="text"
+                        <TextField 
+                            label="Porção da alimentação da noite"
                             name="porcao_alimentacao_noite"
-                            maxLength={100}
                             value={formData.porcao_alimentacao_noite}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLength={100}
                         />
                     </div>
 
