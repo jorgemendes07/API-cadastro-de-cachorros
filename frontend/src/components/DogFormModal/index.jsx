@@ -37,28 +37,24 @@ export default function DogFormModal({
                 <form onSubmit={handleSubmit} className="space-y-4">
 
                     {/* Nome */}
-                    <div>
-                        <TextField 
-                            label="Nome"
-                            name="nome"
-                            value={formData.nome}
-                            onChange={handleChange}
-                            maxLenght={100}
-                            required
-                        />
-                    </div>
+                    <TextField 
+                        label="Nome"
+                        name="nome"
+                        value={formData.nome}
+                        onChange={handleChange}
+                        maxLength={100}
+                        required
+                    />
                     
                     {/* Raça */}
-                    <div>
-                        <TextField 
-                            label="Raça"
-                            name="raca"
-                            value={formData.raca}
-                            onChange={handleChange}
-                            maxLenght={50}
-                            required
-                        />
-                    </div>
+                    <TextField 
+                        label="Raça"
+                        name="raca"
+                        value={formData.raca}
+                        onChange={handleChange}
+                        maxLength={50}
+                        required
+                    />
 
                     {/* Data de nascimento */}
                     <div>
@@ -89,39 +85,33 @@ export default function DogFormModal({
                     </div>
 
                     {/* Nome do tutor */}
-                    <div>
-                        <TextField 
-                            label="Nome do tutor"
-                            name="nome_tutor"
-                            value={formData.nome_tutor}
-                            onChange={handleChange}
-                            maxLenght={100}
-                        />
-                    </div>
+                    <TextField 
+                        label="Nome do tutor"
+                        name="nome_tutor"
+                        value={formData.nome_tutor}
+                        onChange={handleChange}
+                        maxLength={100}
+                    />
 
                     {/* Contato */}
-                    <div>
-                        <TextField 
-                            label="Contato 1"
-                            name="contato"
-                            value={formData.contato}
-                            onChange={handleChange}
-                            maxLenght={11}
-                            placeHolder="Preencha apenas com números"
-                        />
-                    </div>
+                    <TextField 
+                        label="Contato 1"
+                        name="contato"
+                        value={formData.contato}
+                        onChange={handleChange}
+                        maxLength={11}
+                        placeHolder="Preencha apenas com números"
+                    />
 
                     {/* Contato 2*/}
-                    <div>
-                        <TextField 
-                            label="Contato 2"
-                            name="contato2"
-                            value={formData.contato2}
-                            onChange={handleChange}
-                            maxLenght={11}
-                            placeHolder="Preencha apenas com números"
-                        />
-                    </div>
+                    <TextField 
+                        label="Contato 2"
+                        name="contato_2"
+                        value={formData.contato_2}
+                        onChange={handleChange}
+                        maxLength={11}
+                        placeHolder="Preencha apenas com números"
+                    />
 
                     {/* Endereço do tutor*/}
                     <div>
@@ -290,16 +280,14 @@ export default function DogFormModal({
                     </div>
 
                     {/* Contato veterinario*/}
-                    <div>
-                        <TextField 
-                            label="Contato do veterinário"
-                            name="contato_veterinario"
-                            value={formData.contato_veterinario}
-                            onChange={handleChange}
-                            maxLenght={11}
-                            placeHolder="Preencha apenas com números"
-                        />
-                    </div>
+                    <TextField 
+                        label="Contato do veterinário"
+                        name="contato_veterinario"
+                        value={formData.contato_veterinario}
+                        onChange={handleChange}
+                        maxLength={11}
+                        placeHolder="Preencha apenas com números"
+                    />
 
                     {/* Enderço da clínica veterinária*/}
                     <div>
@@ -315,16 +303,14 @@ export default function DogFormModal({
                     </div>
 
                     {/* Contato clinica veterinária 24 horas */}
-                    <div>
-                        <TextField 
-                            label="Contato da clínica veterinária 24h"
-                            name="contato_clinica_veterinaria_24_horas"
-                            value={formData.contato_clinica_veterinaria_24_horas}
-                            onChange={handleChange}
-                            maxLenght={11}
-                            placeHolder="Preencha apenas com números"
-                        />
-                    </div>
+                    <TextField 
+                        label="Contato da clínica veterinária 24h"
+                        name="contato_clinica_veterinaria_24_horas"
+                        value={formData.contato_clinica_veterinaria_24_horas}
+                        onChange={handleChange}
+                        maxLength={11}
+                        placeHolder="Preencha apenas com números"
+                    />
 
                     {/* Endereço da clínica veterinária 24 horas*/}
                     <div>
@@ -383,70 +369,58 @@ export default function DogFormModal({
                     </div>
 
                     {/* Horário alimentação manhã */}
-                    <div>
-                        <TextField 
-                            label="Horário da alimentação da manhã"
-                            name="horario_alimentacao_manha"
-                            value={formData.horario_alimentacao_manha}
-                            onChange={handleChange}
-                            maxLength={50}
-                        />
-                    </div>
+                    <TextField 
+                        label="Horário da alimentação da manhã"
+                        name="horario_alimentacao_manha"
+                        value={formData.horario_alimentacao_manha}
+                        onChange={handleChange}
+                        maxLength={50}
+                    />
 
                     {/* Porção alimentação manhã */}
-                    <div>
-                        <TextField 
-                            label="Porção da alimentação da manhã"
-                            name="porcao_alimentacao_manha"
-                            value={formData.porcao_alimentacao_manha}
-                            onChange={handleChange}
-                            maxLength={100}
-                        />
-                    </div>
+                    <TextField 
+                        label="Porção da alimentação da manhã"
+                        name="porcao_alimentacao_manha"
+                        value={formData.porcao_alimentacao_manha}
+                        onChange={handleChange}
+                        maxLength={100}
+                    />
 
                     {/* Horário alimentação tarde */}
-                    <div>
-                        <TextField 
-                            label="Horário da alimentação da tarde"
-                            name="horario_alimentacao_tarde"
-                            value={formData.horario_alimentacao_tarde}
-                            onChange={handleChange}
-                            maxLength={50}
-                        />
-                    </div>
+                    <TextField 
+                        label="Horário da alimentação da tarde"
+                        name="horario_alimentacao_tarde"
+                        value={formData.horario_alimentacao_tarde}
+                        onChange={handleChange}
+                        maxLength={50}
+                    />
 
                     {/* Porção alimentação tarde */}
-                    <div>
-                        <TextField 
-                            label="Porção da alimentação da tarde"
-                            name="porcao_alimentacao_tarde"
-                            value={formData.porcao_alimentacao_tarde}
-                            onChange={handleChange}
-                            maxLength={100}
-                        />
-                    </div>
+                    <TextField 
+                        label="Porção da alimentação da tarde"
+                        name="porcao_alimentacao_tarde"
+                        value={formData.porcao_alimentacao_tarde}
+                        onChange={handleChange}
+                        maxLength={100}
+                    />
 
                     {/* Horário alimentação noite */}
-                    <div>
-                        <TextField 
-                            label="Horário da alimentação da noite"
-                            name="horario_alimentacao_noite"
-                            value={formData.horario_alimentacao_noite}
-                            onChange={handleChange}
-                            maxLength={50}
-                        />
-                    </div>
+                    <TextField 
+                        label="Horário da alimentação da noite"
+                        name="horario_alimentacao_noite"
+                        value={formData.horario_alimentacao_noite}
+                        onChange={handleChange}
+                        maxLength={50}
+                    />
 
                     {/* Porção alimentação noite */}
-                    <div>
-                        <TextField 
-                            label="Porção da alimentação da noite"
-                            name="porcao_alimentacao_noite"
-                            value={formData.porcao_alimentacao_noite}
-                            onChange={handleChange}
-                            maxLength={100}
-                        />
-                    </div>
+                    <TextField 
+                        label="Porção da alimentação da noite"
+                        name="porcao_alimentacao_noite"
+                        value={formData.porcao_alimentacao_noite}
+                        onChange={handleChange}
+                        maxLength={100}
+                    />
 
                     {/* Restrição de saude */}
                     <div>
