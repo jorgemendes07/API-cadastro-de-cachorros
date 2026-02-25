@@ -101,7 +101,7 @@ export default function DogFormModal({
                         value={formData.contato}
                         onChange={handleChange}
                         maxLength={11}
-                        placeHolder="Preencha apenas com números"
+                        placeholder="Preencha apenas com números"
                     />
 
                     {/* Contato 2*/}
@@ -111,7 +111,7 @@ export default function DogFormModal({
                         value={formData.contato_2}
                         onChange={handleChange}
                         maxLength={11}
-                        placeHolder="Preencha apenas com números"
+                        placeholder="Preencha apenas com números"
                     />
 
                     {/* Endereço do tutor*/}
@@ -283,7 +283,7 @@ export default function DogFormModal({
                         value={formData.contato_veterinario}
                         onChange={handleChange}
                         maxLength={11}
-                        placeHolder="Preencha apenas com números"
+                        placeholder="Preencha apenas com números"
                     />
 
                     {/* Enderço da clínica veterinária*/}
@@ -302,7 +302,7 @@ export default function DogFormModal({
                         value={formData.contato_clinica_veterinaria_24_horas}
                         onChange={handleChange}
                         maxLength={11}
-                        placeHolder="Preencha apenas com números"
+                        placeholder="Preencha apenas com números"
                     />
 
                     {/* Endereço da clínica veterinária 24 horas*/}

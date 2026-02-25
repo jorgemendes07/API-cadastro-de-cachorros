@@ -1,4 +1,4 @@
-export default function TextField ({ label, name, value, onChange, maxLength, required = false, placeHolder = ""}) {
+export default function TextField ({ label, name, value, onChange, maxLength, required = false, placeholder = ""}) {
     return (
         <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">{label}</label>
@@ -11,7 +11,7 @@ export default function TextField ({ label, name, value, onChange, maxLength, re
                 onChange={onChange}
                 maxLength={maxLength}
                 required={required}
-                placeholder={placeHolder}
+                placeholder={placeholder}
             />
         </div> 
     )
