@@ -1,5 +1,6 @@
 import { useDogForm } from "../../hooks/useDogForm";
 import TextField from "../TextField";
+import TextAreaField from "../TextAreaField";
 
 export default function DogFormModal({
     isOpen,
@@ -114,17 +115,13 @@ export default function DogFormModal({
                     />
 
                     {/* Endereço do tutor*/}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Endreço do tutor</label>
-                        <textarea
-                            name="endereco_tutor"
-                            rows={2}
-                            value={formData.endereco_tutor}
-                            maxLength={255}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <TextAreaField 
+                        label="Endereço do tutor"
+                        name="endereco_tutor"
+                        value={formData.endereco_tutor}
+                        onChange={handleChange}
+                        maxLength={255}
+                    />
 
                     {/* Castrado */}
                     <div>
@@ -290,17 +287,13 @@ export default function DogFormModal({
                     />
 
                     {/* Enderço da clínica veterinária*/}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Enderço da clínica veterinária</label>
-                        <textarea
-                            name="endereco_clinica_veterinaria"
-                            rows={2}
-                            value={formData.endereco_clinica_veterinaria}
-                            maxLength={255}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <TextAreaField 
+                        label="Enderço da clínica veterinária"
+                        name="endereco_clinica_veterinaria"
+                        value={formData.endereco_clinica_veterinaria}
+                        onChange={handleChange}
+                        maxLength={255}
+                    />
 
                     {/* Contato clinica veterinária 24 horas */}
                     <TextField 
@@ -313,17 +306,13 @@ export default function DogFormModal({
                     />
 
                     {/* Endereço da clínica veterinária 24 horas*/}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Endreço da clínica veterinária 24h</label>
-                        <textarea
-                            name="endereco_clinica_veterinaria_24_horas"
-                            rows={2}
-                            value={formData.endereco_clinica_veterinaria_24_horas}
-                            maxLength={255}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <TextAreaField 
+                        label="Endreço da clínica veterinária 24h"
+                        name="endereco_clinica_veterinaria_24_horas"
+                        value={formData.endereco_clinica_veterinaria_24_horas}
+                        onChange={handleChange}
+                        maxLength={255}
+                    />
 
                     {/* Restrição alimentar */}
                     <div>
@@ -509,56 +498,40 @@ export default function DogFormModal({
                     </div>
 
                     {/* comportamento */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Como é o comportamento do seu pet?</label>
-                        <textarea
-                            rows={2}
-                            name="comportamento"
-                            maxLength={1000}
-                            value={formData.comportamento}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <TextAreaField 
+                        label="Como é o comportamento do seu pet?"
+                        name="comportamento"
+                        value={formData.comportamento}
+                        onChange={handleChange}
+                        maxLength={1000}
+                    />
 
                     {/* medo */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet tem medo de alguma coisa?</label>
-                        <textarea
-                            rows={2}
-                            name="medo"
-                            maxLength={1000}
-                            value={formData.medo}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <TextAreaField 
+                        label="Seu pet tem medo de alguma coisa?"
+                        name="medo"
+                        value={formData.medo}
+                        onChange={handleChange}
+                        maxLength={1000}
+                    />
 
                     {/* relacionamento com outros animais */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Como o seu pet se relaciona com outros animais?</label>
-                        <textarea
-                            rows={2}
-                            name="relacionamento_com_outros_animais"
-                            maxLength={1000}
-                            value={formData.relacionamento_com_outros_animais}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <TextAreaField 
+                        label="Como o seu pet se relaciona com outros animais?"
+                        name="relacionamento_com_outros_animais"
+                        value={formData.relacionamento_com_outros_animais}
+                        onChange={handleChange}
+                        maxLength={1000}
+                    />
 
                     {/* relacionamento com outras pessoas */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Como o seu pet se relaciona com novas pessoas?</label>
-                        <textarea
-                            rows={2}
-                            name="relacionamento_com_pessoas"
-                            maxLength={1000}
-                            value={formData.relacionamento_com_pessoas}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <TextAreaField 
+                        label="Como o seu pet se relaciona com novas pessoas?"
+                        name="relacionamento_com_pessoas"
+                        value={formData.relacionamento_com_pessoas}
+                        onChange={handleChange}
+                        maxLength={1000}
+                    />
 
                     {/* dependência */}
                     <div>
