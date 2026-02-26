@@ -2,6 +2,7 @@ import { useDogForm } from "../../hooks/useDogForm";
 import TextField from "../TextField";
 import TextAreaField from "../TextAreaField";
 import DateField from "../DateField";
+import BooleanField from "../BooleanField";
 
 export default function DogFormModal({
     isOpen,
@@ -121,33 +122,12 @@ export default function DogFormModal({
                     />
 
                     {/* Castrado */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Castrado</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="castrado"
-                            id="castrado_sim"
-                            value="true"
-                            checked={formData.castrado === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="castrado_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="castrado"
-                            id="castrado_nao"
-                            value="false"
-                            checked={formData.castrado === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="castrado_nao">Não</label>
-                        </div>
-                    </div>
+                    <BooleanField 
+                        label="Castrado"
+                        name="castrado"
+                        value={formData.castrado}
+                        onChange={handleChange}
+                    />
 
                     {/* Vacina antirrábica */}
                     <DateField 
@@ -166,63 +146,21 @@ export default function DogFormModal({
                     />
 
                     {/* Passeia */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet passeia?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="passeia"
-                            id="passeia_sim"
-                            value="true"
-                            checked={formData.passeia === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="passeia_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="passeia"
-                            id="passeia_nao"
-                            value="false"
-                            checked={formData.passeia === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="passeia_nao">Não</label>
-                        </div>
-                    </div>
+                    <BooleanField 
+                        label="Seu pet passeia?"
+                        name="passeia"
+                        value={formData.passeia}
+                        onChange={handleChange}
+                    />
 
                     {/* Necessidades em casa */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet faz as necessidades em casa?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="necessidades_em_casa"
-                            id="necessidades_em_casa_sim"
-                            value="true"
-                            checked={formData.necessidades_em_casa === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="necessidades_em_casa_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="necessidades_em_casa"
-                            id="necessidades_em_casa_nao"
-                            value="false"
-                            checked={formData.necessidades_em_casa === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="necessidades_em_casa_nao">Não</label>
-                        </div>
-                    </div>
-
+                    <BooleanField 
+                        label="Seu pet faz as necessidades em casa?"
+                        name="necessidades_em_casa"
+                        value={formData.necessidades_em_casa}
+                        onChange={handleChange}
+                    />
+                    
                     {/* Plano de saude */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui plano de saúde?</label>
@@ -523,33 +461,12 @@ export default function DogFormModal({
                     />
 
                     {/* dependência */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet é dependente de você?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="dependente"
-                            id="dependente_sim"
-                            value="true"
-                            checked={formData.dependente === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="dependente_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="dependente"
-                            id="dependente_nao"
-                            value="false"
-                            checked={formData.dependente === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="dependente_nao">Não</label>
-                        </div>
-                    </div>
+                    <BooleanField 
+                        label="Seu pet é dependente de você?"
+                        name="dependente"
+                        value={formData.dependente}
+                        onChange={handleChange}
+                    />
 
                     {/* Experiência com hospedagem */}
                     <div>
@@ -595,34 +512,13 @@ export default function DogFormModal({
                     </div>
 
                     {/* posse com alimentos */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui posse com alimentos?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="posse_alimento"
-                            id="posse_alimento_sim"
-                            value="true"
-                            checked={formData.posse_alimento === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="posse_alimento_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="posse_alimento"
-                            id="posse_alimento_nao"
-                            value="false"
-                            checked={formData.posse_alimento === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="posse_alimento_nao">Não</label>
-                        </div>
-                    </div>
-
+                    <BooleanField 
+                        label="Seu pet possui posse com alimentos?"
+                        name="posse_alimento"
+                        value={formData.posse_alimento}
+                        onChange={handleChange}
+                    />
+                    
                     {/* Posse com objetos */}
                     <div>
                         <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet tem posse com algum objeto?</label>
