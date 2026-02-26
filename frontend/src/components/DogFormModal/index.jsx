@@ -1,6 +1,7 @@
 import { useDogForm } from "../../hooks/useDogForm";
 import TextField from "../TextField";
 import TextAreaField from "../TextAreaField";
+import DateField from "../DateField";
 
 export default function DogFormModal({
     isOpen,
@@ -58,17 +59,13 @@ export default function DogFormModal({
                     />
 
                     {/* Data de nascimento */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Data de Nascimento</label>
-                        <input
-                            type="date"
-                            name="data_nascimento"
-                            value={formData.data_nascimento}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                        />
-                    </div>
+                    <DateField 
+                        label="Data de Nascimento"
+                        name="data_nascimento"
+                        value={formData.data_nascimento}
+                        onChange={handleChange}
+                        required
+                    />
 
                     {/* Porte */}
                     <div>
@@ -153,28 +150,20 @@ export default function DogFormModal({
                     </div>
 
                     {/* Vacina antirrábica */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Data da ultima vacina antirrábica</label>
-                        <input
-                            type="date"
-                            name="vacina_antirrabica"
-                            value={formData.vacina_antirrabica}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <DateField 
+                        label="Data da ultima vacina antirrábica"
+                        name="vacina_antirrabica"
+                        value={formData.vacina_antirrabica}
+                        onChange={handleChange}
+                    />
 
                     {/* Vacina polivalente */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Data da ultima vacina polivalente</label>
-                        <input
-                            type="date"
-                            name="vacina_polivalente"
-                            value={formData.vacina_polivalente}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+                    <DateField 
+                        label="Data da ultima vacina polivalente"
+                        name="vacina_polivalente"
+                        value={formData.vacina_polivalente}
+                        onChange={handleChange}
+                    />
 
                     {/* Passeia */}
                     <div>
