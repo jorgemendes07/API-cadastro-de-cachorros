@@ -3,6 +3,9 @@ import TextField from "../TextField";
 import TextAreaField from "../TextAreaField";
 import DateField from "../DateField";
 import BooleanField from "../BooleanField";
+import BooleanTextField from "../BooleanTextField";
+import BooleanTextAreaField from "../BooleanTextAreaField";
+import SelectField from "../SelectField";
 
 export default function DogFormModal({
     isOpen,
@@ -69,19 +72,18 @@ export default function DogFormModal({
                     />
 
                     {/* Porte */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Porte</label>
-                        <select
-                            name="porte"
-                            value={formData.porte}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-                        >
-                            <option value="Pequeno">Pequeno</option>
-                            <option value="Médio">Médio</option>
-                            <option value="Grande">Grande</option>
-                        </select>
-                    </div>
+                    <SelectField 
+                        label="Porte"
+                        name="porte"
+                        value={formData.porte}
+                        onChange={handleChange}
+                        options={[
+                            { value: "Pequeno", label: "Pequeno" },
+                            { value: "Médio", label: "Médio" },
+                            { value: "Grande", label: "Grande" },
+                        ]}
+                    
+                    />
 
                     {/* Nome do tutor */}
                     <TextField 
@@ -162,46 +164,16 @@ export default function DogFormModal({
                     />
                     
                     {/* Plano de saude */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui plano de saúde?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="plano_de_saude"
-                            id="plano_de_saude_sim"
-                            value="true"
-                            checked={formData.plano_de_saude === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="plano_de_saude_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="plano_de_saude"
-                            id="plano_de_saude_nao"
-                            value="false"
-                            checked={formData.plano_de_saude === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="plano_de_saude_nao">Não</label>
-                        </div>
-
-                        {formData.plano_de_saude === true && (
-                            <div className="mt-2"> 
-                                <input
-                                    type="text"
-                                    name="nome_plano_de_saude"
-                                    value={formData.nome_plano_de_saude}
-                                    onChange={handleChange}
-                                    placeholder="Qual o nome do plano?"
-                                    className="w-full px-3 py-2 border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                />
-                            </div>
-                        )}
-                    </div>
+                    <BooleanTextField 
+                        label="Seu pet possui plano de saúde?"
+                        name="plano_de_saude"
+                        value={formData.plano_de_saude}
+                        onChange={handleChange}
+                        textName="nome_plano_de_saude"
+                        textValue={formData.nome_plano_de_saude}
+                        maxLength={100}
+                        placeholder="Qual o nome do plano?"
+                    />
 
                     {/* Contato veterinario*/}
                     <TextField 
@@ -242,47 +214,16 @@ export default function DogFormModal({
                     />
 
                     {/* Restrição alimentar */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui alguma restrição alimentar?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="restricao_alimentar"
-                            id="restricao_alimentar_sim"
-                            value="true"
-                            checked={formData.restricao_alimentar === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="restricao_alimentar_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="restricao_alimentar"
-                            id="restricao_alimentar_nao"
-                            value="false"
-                            checked={formData.restricao_alimentar === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="restricao_alimentar_nao">Não</label>
-                        </div>
-
-                        {formData.restricao_alimentar === true && (
-                            <div className="mt-2"> 
-                                <textarea
-                                    name="descricao_restricao_alimentar"
-                                    rows={2}
-                                    maxLength={255}
-                                    value={formData.descricao_restricao_alimentar}
-                                    onChange={handleChange}
-                                    placeholder="Quais restrições alimentares?"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                />
-                            </div>
-                        )}
-                    </div>
+                    <BooleanTextAreaField 
+                        label="Seu pet possui alguma restrição alimentar?"
+                        name="restricao_alimentar"
+                        value={formData.restricao_alimentar}
+                        onChange={handleChange}
+                        textName="descricao_restricao_alimentar"
+                        textValue={formData.descricao_restricao_alimentar}
+                        maxLength={255}
+                        placeholder="Quais restrições alimentares?"
+                    />
 
                     {/* Horário alimentação manhã */}
                     <TextField 
@@ -339,90 +280,28 @@ export default function DogFormModal({
                     />
 
                     {/* Restrição de saude */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet possui alguma restrição de saúde que influencia na rotina do animal?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="restricao_medica"
-                            id="restricao_medica_sim"
-                            value="true"
-                            checked={formData.restricao_medica === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="restricao_medica_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="restricao_medica"
-                            id="restricao_medica_nao"
-                            value="false"
-                            checked={formData.restricao_medica === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="restricao_medica_nao">Não</label>
-                        </div>
-
-                        {formData.restricao_medica === true && (
-                            <div className="mt-2"> 
-                                <textarea
-                                    name="descricao_restricao_medica"
-                                    rows={2}
-                                    maxLength={255}
-                                    value={formData.descricao_restricao_medica}
-                                    onChange={handleChange}
-                                    placeholder="Quais restrições de saúde?"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                />
-                            </div>
-                        )}
-                    </div>
+                    <BooleanTextAreaField 
+                        label="Seu pet possui alguma restrição de saúde que influencia na rotina do animal?"
+                        name="restricao_medica"
+                        value={formData.restricao_medica}
+                        onChange={handleChange}
+                        textName="descricao_restricao_medica"
+                        textValue={formData.descricao_restricao_medica}
+                        maxLength={255}
+                        placeholder="Quais restrições alimentares?"
+                    />
 
                     {/* Uso de medicamento */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet faz uso de alguma medicação?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="utiliza_medicacao"
-                            id="utiliza_medicacao_sim"
-                            value="true"
-                            checked={formData.utiliza_medicacao === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="utiliza_medicacao_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="utiliza_medicacao"
-                            id="utiliza_medicacao_nao"
-                            value="false"
-                            checked={formData.utiliza_medicacao === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="utiliza_medicacao_nao">Não</label>
-                        </div>
-
-                        {formData.utiliza_medicacao === true && (
-                            <div className="mt-2"> 
-                                <textarea
-                                    name="descricao_utiliza_medicacao"
-                                    rows={2}
-                                    maxLength={500}
-                                    value={formData.descricao_utiliza_medicacao}
-                                    onChange={handleChange}
-                                    placeholder="Quais medicações e quais horários?"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                />
-                            </div>
-                        )}
-                    </div>
+                    <BooleanTextAreaField 
+                        label="Seu pet faz uso de alguma medicação?"
+                        name="utiliza_medicacao"
+                        value={formData.utiliza_medicacao}
+                        onChange={handleChange}
+                        textName="descricao_utiliza_medicacao"
+                        textValue={formData.descricao_utiliza_medicacao}
+                        maxLength={500}
+                        placeholder="Quais medicações e quais horários?"
+                    />
 
                     {/* comportamento */}
                     <TextAreaField 
@@ -469,47 +348,16 @@ export default function DogFormModal({
                     />
 
                     {/* Experiência com hospedagem */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet já frequentou creche, hotel ou doghero?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="experiencia_com_hospedagem"
-                            id="experiencia_com_hospedagem_sim"
-                            value="true"
-                            checked={formData.experiencia_com_hospedagem === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="experiencia_com_hospedagem_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="experiencia_com_hospedagem"
-                            id="experiencia_com_hospedagem_nao"
-                            value="false"
-                            checked={formData.experiencia_com_hospedagem === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="experiencia_com_hospedagem_nao">Não</label>
-                        </div>
-
-                        {formData.experiencia_com_hospedagem === true && (
-                            <div className="mt-2"> 
-                                <textarea
-                                    name="descricao_experiencia_com_hospedagem"
-                                    rows={2}
-                                    maxLength={255}
-                                    value={formData.descricao_experiencia_com_hospedagem}
-                                    onChange={handleChange}
-                                    placeholder="Quais?"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                />
-                            </div>
-                        )}
-                    </div>
+                    <BooleanTextAreaField 
+                        label="Seu pet já frequentou creche, hotel ou doghero?"
+                        name="experiencia_com_hospedagem"
+                        value={formData.experiencia_com_hospedagem}
+                        onChange={handleChange}
+                        textName="descricao_experiencia_com_hospedagem"
+                        textValue={formData.descricao_experiencia_com_hospedagem}
+                        maxLength={255}
+                        placeholder="Quais?"
+                    />
 
                     {/* posse com alimentos */}
                     <BooleanField 
@@ -520,47 +368,16 @@ export default function DogFormModal({
                     />
                     
                     {/* Posse com objetos */}
-                    <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Seu pet tem posse com algum objeto?</label>
-                        <div>
-                            <input
-                            type="radio"
-                            name="posse_objeto"
-                            id="posse_objeto_sim"
-                            value="true"
-                            checked={formData.posse_objeto === true}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="posse_objeto_sim">Sim</label>
-                        </div>
-                        <div>
-                            <input
-                            type="radio"
-                            name="posse_objeto"
-                            id="posse_objeto_nao"
-                            value="false"
-                            checked={formData.posse_objeto === false}
-                            onChange={handleChange}
-                            className="px-3 py-2 mr-2 border-gray-300 focus:outline-none focus:ring-blue-500"
-                            />
-                            <label htmlFor="posse_objeto_nao">Não</label>
-                        </div>
-
-                        {formData.posse_objeto === true && (
-                            <div className="mt-2"> 
-                                <textarea
-                                    name="descricao_posse_objeto"
-                                    rows={2}
-                                    maxLength={255}
-                                    value={formData.descricao_posse_objeto}
-                                    onChange={handleChange}
-                                    placeholder="Quais?"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                />
-                            </div>
-                        )}
-                    </div>
+                    <BooleanTextAreaField 
+                        label="Seu pet tem posse com algum objeto?"
+                        name="posse_objeto"
+                        value={formData.posse_objeto}
+                        onChange={handleChange}
+                        textName="descricao_posse_objeto"
+                        textValue={formData.descricao_posse_objeto}
+                        maxLength={255}
+                        placeholder="Quais?"
+                    />
 
                     {/* Botão para fechar modal */}
                     <div className="flex justify-end space-x-3 mt-6">
